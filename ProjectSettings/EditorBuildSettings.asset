@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_ProjectAssets/Scenes/Exponor/menu_exponor.unity
+    guid: 25f85b946117ce041b189a715e860102
+  - enabled: 1
+    path: Assets/_ProjectAssets/Scenes/Exponor/AR CAMERA - Exponor.unity
+    guid: d71643600bf1d164eb500a66f041f840
+  m_configObjects: {}
