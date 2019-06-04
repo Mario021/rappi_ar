@@ -11,6 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed8ab5a05dade64398a6378f210085d, type: 3}
   m_Name: GameDataConfig
   m_EditorClassIdentifier: 
+  levelsGame:
+  - levelType: 0
+    valueLvl: 1
+  - levelType: 1
+    valueLvl: 0.8
+  - levelType: 2
+    valueLvl: 0.6
   velSingleShuffle:
   - 1
   - 1

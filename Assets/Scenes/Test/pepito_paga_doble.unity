@@ -226,6 +226,7 @@ MonoBehaviour:
       - {fileID: 1401280116}
       - {fileID: 1476199382}
       - {fileID: 439691716}
+  canSelectContainer: 0
   canNextMove: 0
   isShuffling: 0
   AutoShuffle: 1
@@ -440,9 +441,10 @@ GameObject:
   - component: {fileID: 453845671}
   - component: {fileID: 453845670}
   - component: {fileID: 453845669}
+  - component: {fileID: 453845672}
   m_Layer: 0
-  m_Name: Cylinder_1
-  m_TagString: Untagged
+  m_Name: Container_0
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,6 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initPos: 0
+  HasPrize: 0
   IsMoving: 0
 --- !u!23 &453845670
 MeshRenderer:
@@ -515,6 +518,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 453845667}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &453845672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453845667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &504399222
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,9 +804,10 @@ GameObject:
   - component: {fileID: 806251671}
   - component: {fileID: 806251670}
   - component: {fileID: 806251669}
+  - component: {fileID: 806251672}
   m_Layer: 0
-  m_Name: Cylinder_2
-  m_TagString: Untagged
+  m_Name: Container_1
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,6 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initPos: 1
+  HasPrize: 0
   IsMoving: 0
 --- !u!23 &806251670
 MeshRenderer:
@@ -864,6 +881,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 806251667}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &806251672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 806251667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &952853668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209, y: -142.16}
+  m_AnchoredPosition: {x: 136.02, y: -142.16}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023255269
@@ -1193,9 +1222,10 @@ GameObject:
   - component: {fileID: 1208644588}
   - component: {fileID: 1208644587}
   - component: {fileID: 1208644586}
+  - component: {fileID: 1208644589}
   m_Layer: 0
-  m_Name: Cylinder_3
-  m_TagString: Untagged
+  m_Name: Container_2
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,6 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initPos: 2
+  HasPrize: 0
   IsMoving: 0
 --- !u!23 &1208644587
 MeshRenderer:
@@ -1268,6 +1299,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208644584}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1208644589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208644584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1212352931
 GameObject:
   m_ObjectHideFlags: 0

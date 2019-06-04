@@ -98,6 +98,7 @@ public class PepitoMinigameControl : MonoBehaviour
     // Contador de contenedores que estan en movimiento. 
     private int _countContainersMoving = 0;
 
+    public bool canSelectContainer = false;
     public bool canNextMove = false;
     public bool isShuffling = false;
     public bool AutoShuffle = true;
@@ -123,6 +124,41 @@ public class PepitoMinigameControl : MonoBehaviour
         maxMoves = velSingleShuffle.Length;
 	}
 
+    void Update()
+    {
+        if (!canSelectContainer)
+            return;
+
+        // Seleccionar contenedor
+        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit hit;
+            if (Physics.Raycast(raycast, out hit))
+            {                
+                if (hit.collider.CompareTag("Container"))
+                {
+                    hit.collider.GetComponent<Container>().OnSelectContainer();
+                }
+            }
+        }
+
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(raycast, out hit))
+            {
+                if (hit.collider.CompareTag("Container"))
+                {
+                    Debug.Log("Container " + hit.collider.name + " clicked");
+                }
+            }
+        }
+#endif
+    }
+
     /// <summary>
     /// Inicializar minijuego
     /// </summary>
@@ -147,6 +183,7 @@ public class PepitoMinigameControl : MonoBehaviour
         _currTypeMove = Type_Move.None;
         isShuffling = true;
         canNextMove = true;
+        canSelectContainer = false;
 
         OnInitGame.Invoke();
 
@@ -156,7 +193,8 @@ public class PepitoMinigameControl : MonoBehaviour
     
     public void FinishGame()
     {
-
+        isShuffling = false;
+        canSelectContainer = true;
     }
 
     /// <summary>
@@ -191,7 +229,6 @@ public class PepitoMinigameControl : MonoBehaviour
         }
        
         _currTypeMove = (Type_Move)typeMove;
-        Debug.Log(_currDirMove);
 
         // Revolver contenedores
         //Move_1: Intercambio entre posicion 1 y posicion 2
@@ -265,8 +302,8 @@ public class PepitoMinigameControl : MonoBehaviour
         OnFinishMove.Invoke();
 
         if (_countMoves >= maxMoves)
-        {
-            isShuffling = false;
+        {          
+            FinishGame();
 
             OnFinishGame.Invoke();
 

@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Container : MonoBehaviour
 {
     public int initPos = 0;
 
+    public bool HasPrize = false;
     public bool IsMoving = false;
+
+    public UnityEvent OnSelected;
 
 	void Start ()
     {
 		
 	}
-	
+
     public void Move(LTSpline spline, float vel, PepitoMinigameControl.OnFinishShuffleCallback onFinish = null)
     {
         IsMoving = true;
@@ -34,5 +38,10 @@ public class Container : MonoBehaviour
     public int GetInitPos()
     {
         return initPos;
+    }
+
+    public void OnSelectContainer()
+    {
+        OnSelected.Invoke();
     }
 }
