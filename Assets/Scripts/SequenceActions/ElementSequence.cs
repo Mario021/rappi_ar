@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ElementSequence : MonoBehaviour
+public abstract class ElementSequence : MonoBehaviour
 {
     private SequenceControl.OnFinishElementAction _onFinishActionElement = null;
 
