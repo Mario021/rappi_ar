@@ -178,17 +178,8 @@ MonoBehaviour:
   - typeMove: 3
     posObj1: 1
     posObj2: 2
-  velSingleShuffle:
-  - 1
-  - 1
-  - 1
-  - 0.65
-  - 0.65
-  - 0.65
-  - 0.3
-  - 0.3
-  - 0.3
-  - 0.2
+  gameConfigData: {fileID: 11400000, guid: 9f5ab59480b029241acb21116f9b4c09, type: 2}
+  velSingleShuffle: []
   difficulty: 0.7
   _currDirMove: 0
   _currTypeMove: 0
