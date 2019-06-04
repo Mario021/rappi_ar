@@ -1,18 +1,20 @@
 fileFormatVersion: 2
-guid: 7c7b185c6d13c9c49aff63d9a52c1b4a
+guid: c75ccec155ad9f84eae4832c54045e9a
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
-    2186277476908879412: ImportLogs
-  externalObjects: {}
+    100000: //RootNode
+    400000: //RootNode
+    2100000: color_moneda
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: moneda
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_moneda
+    second: {fileID: 2100000, guid: 30c34c28984feeb44b510fe9e6a0ab7c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

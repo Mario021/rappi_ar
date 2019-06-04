@@ -10,9 +10,15 @@ public class PepitoMinigameControl : MonoBehaviour
     // Contenedores que se moveran en el minijuego. 
     public Container[] arrContainers;
 
+    // Posicion inicial de cada contenedor
+    public Transform[] posContainers;
+
     // Movimientos. Indica los objetos relacionados cuando
     // se realiza un movimiento.
     public ConfigTypeMove[] configMoves;
+
+    public float[] velSingleShuffle;
+    public float difficulty = 1f;
 
     // Objetos relacionados a un tipo de movimiento
     [System.Serializable]
@@ -63,6 +69,8 @@ public class PepitoMinigameControl : MonoBehaviour
     [SerializeField]
     private int _countMoves = 0;
 
+    public float currVelocityShuffle = .5f;
+
     // Velocidad de movimiento y en que momento cambia
 
     // Movimiento asociado a diferentes rutas que recorren los
@@ -85,10 +93,15 @@ public class PepitoMinigameControl : MonoBehaviour
     // Conjunto de caminos para los diferentes tipos de movimientos
     public pathContainer[] splinePaths;
 
-    public bool isShuffling = false;
+    // Contador de contenedores que estan en movimiento. 
+    private int _countContainersMoving = 0;
 
-    public UnityEvent OnInitShuffle;
-    public UnityEvent OnFinishShuffle;
+    public bool canNextMove = false;
+    public bool isShuffling = false;
+    public bool AutoShuffle = true;
+
+    public UnityEvent OnInitMove;
+    public UnityEvent OnFinishMove;
 
     public UnityEvent OnInitGame;
     public UnityEvent OnFinishGame;
@@ -102,27 +115,45 @@ public class PepitoMinigameControl : MonoBehaviour
 
     void Start ()
     {
-        Init();
-	}
-	
-	void Update ()
-    {
-        
+        maxMoves = velSingleShuffle.Length;
+
 	}
 
     /// <summary>
     /// Inicializar minijuego
     /// </summary>
-    public void Init()
+    public void InitGame()
     {
+        if (isShuffling)
+            return;
+
+        // Reiniciar posicion de contenedores
+        for (int i = 0; i < posContainers.Length; i++)
+        {
+            // Obtener el orden de cada contenedor (pos init) y cambiar la posicion del objeto
+            // de acuerdo a su posicion inicial.
+            arrContainers[i].transform.position = posContainers[arrContainers[i].GetInitPos()].position;
+        }
+
+        // Ordenar arreglo de acuerdo a su posicion inicial
+        arrContainers = arrContainers.OrderBy((c) => c.initPos).ToArray();
+
         _countMoves = 0;
         _currDirMove = Dir_Move.None;
         _currTypeMove = Type_Move.None;
         isShuffling = true;
+        canNextMove = true;
 
         OnInitGame.Invoke();
-    }
 
+        Invoke("Shuffle", .2f);
+        //Shuffle();
+    }
+    
+    public void FinishGame()
+    {
+
+    }
 
     /// <summary>
     /// Revolver contenedores
@@ -130,9 +161,16 @@ public class PepitoMinigameControl : MonoBehaviour
     public void Shuffle()
     {
         if (_countMoves >= maxMoves)
-        {
             return;
-        }       
+
+        if (!canNextMove)
+            return;
+
+        OnInitMove.Invoke();
+
+        canNextMove = false;
+
+        _countMoves++;
 
         // Obtener direccion movimiento
         int dirMove = UnityEngine.Random.Range(1, Enum.GetNames(typeof(Dir_Move)).Length);
@@ -155,18 +193,7 @@ public class PepitoMinigameControl : MonoBehaviour
         //Move_1: Intercambio entre posicion 1 y posicion 2
         //Move_2: Intercambio entre posicion 1 y posicion 3
         //Move_3: Intercambio entre posicion 2 y posicion 3
-        MoveContainer(_currTypeMove, _currDirMove);
-
-        // TODO : Esperar a que se termine de ejecutar el movimiento
-
-        _countMoves++;
-
-        if(_countMoves >= maxMoves)
-        {
-            OnFinishGame.Invoke();
-        }
-
-        //Debug.Log("move: " +  (Type_Move)typeMove);
+        MoveContainer(_currTypeMove, _currDirMove);      
     }
 
     private void MoveContainer(Type_Move tMove, Dir_Move dMove)
@@ -192,8 +219,29 @@ public class PepitoMinigameControl : MonoBehaviour
         LTSpline spline_2 = GetSplineFromTranform(path_2.arrPath, true);
 
         // Mover contenedores
-        arrContainers[move.posObj1].Move(spline_1, .5f);
-        arrContainers[move.posObj2].Move(spline_2, .5f);
+
+        // cantidad de contenedores que se moveran.
+        _countContainersMoving = 2;
+
+        // Calcular velocidad. Velocidad de cada movimiento obtenida desde el arreglo multiplicado
+        // por la dificultad del juego.
+        currVelocityShuffle = velSingleShuffle[_countMoves - 1] * difficulty;
+
+        arrContainers[move.posObj1].Move(spline_1, currVelocityShuffle, () =>
+        {
+            _countContainersMoving--;
+
+            if (_countContainersMoving <= 0)
+                FinishMove();
+        });
+
+        arrContainers[move.posObj2].Move(spline_2, currVelocityShuffle, () =>
+        {
+            _countContainersMoving--;
+
+            if (_countContainersMoving <= 0)
+                FinishMove();
+        });
 
         arrContainers[move.posObj1] = temp2;
         arrContainers[move.posObj2] = temp1;
@@ -203,6 +251,32 @@ public class PepitoMinigameControl : MonoBehaviour
         pathsContainer = null;
         temp1 = null;
         temp2 = null;
+    }
+
+    /// <summary>
+    /// Finalizar movimiento
+    /// </summary>
+    private void FinishMove()
+    {
+        OnFinishMove.Invoke();
+
+        if (_countMoves >= maxMoves)
+        {
+            isShuffling = false;
+
+            OnFinishGame.Invoke();
+
+            return;
+        }
+
+        _countContainersMoving = 0;
+        canNextMove = true;
+
+        // Revolver automaticamente si tiene activado autoshuffle
+        if (AutoShuffle)
+        {
+            Shuffle();
+        }
     }
 
     /// <summary>
@@ -247,6 +321,8 @@ public class PepitoMinigameControl : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        // TODO : Mostrar ruta de cada movimiento
+
         //// Debug.Log("drwaing");
         //if (cr == null)
         //    OnEnable();
@@ -254,4 +330,7 @@ public class PepitoMinigameControl : MonoBehaviour
         //if (cr != null)
         //    cr.gizmoDraw(); // To Visualize the path, use this method
     }
+
+    public delegate void OnFinishShuffleCallback();
+    public static event OnFinishShuffleCallback onFinishShuffleCallback;
 }
