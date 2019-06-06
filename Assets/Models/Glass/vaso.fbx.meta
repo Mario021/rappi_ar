@@ -10,7 +10,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: vaso1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_exterior_vaso
+    second: {fileID: 2100000, guid: 96dc3d8b3bd2e6e4c80f06eda9c63cbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_interior_vaso
+    second: {fileID: 2100000, guid: cb0b4bad1fd715842b0052af2306dce6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -9,6 +9,9 @@ public class S_InitGame_1 : ElementSequence
     public GameObject bag;
     public Material matBag;
 
+    [Header("General")]
+    public float[] timeToNextAction;
+
     [Header("Action 1")]
     public float scaleBag = 1f;
     public float timeScale = .3f;
@@ -67,7 +70,7 @@ public class S_InitGame_1 : ElementSequence
                     LeanTween.scale(bag, Vector3.one * 1.1f * scaleBag, timeScale).setOnComplete(() =>
                     {
                         LeanTween.scale(bag, Vector3.one * scaleBag, .1f);
-                        LeanTween.delayedCall(.3f, () => { initNextSequence(); });
+                        LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                         
                     });
                     break;
@@ -88,7 +91,7 @@ public class S_InitGame_1 : ElementSequence
 
                             if(count <= 0)
                             {
-                                initNextSequence();
+                                LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                             }
                         });
                     }
@@ -100,7 +103,7 @@ public class S_InitGame_1 : ElementSequence
                     //Mochila rappi ingresa en el contenedor central y desaparece 
                     LeanTween.move(bag, _splineBag, timeHideBag).setEase(LeanTweenType.easeInSine).setOnComplete(() => 
                     {
-                        LeanTween.delayedCall(.3f, () => { initNextSequence(); });
+                        LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                     });
 
                     LeanTween.scale(bag, Vector3.zero, .5f).
@@ -126,7 +129,7 @@ public class S_InitGame_1 : ElementSequence
 
                                 if (count <= 0)
                                 {
-                                    FinishElementAction();
+                                    LeanTween.delayedCall(timeToNextAction[_currSequence], () => { FinishElementAction(); });
                                 }
                             });
                     }
@@ -153,17 +156,4 @@ public class S_InitGame_1 : ElementSequence
 
         return new LTSpline(arrVectors);
     }
-
-    //private void setAlpha(float alpha, object obj)
-    //{
-    //    Debug.Log("alpha: " + alpha);
-    //    Debug.Log("object: " + obj);
-    //    GameObject go = (GameObject)obj;
-    //    Material mat = go.GetComponent<Material>();
-    //    //Color c = mat.color;
-
-    //    //c.a = alpha;
-
-    //    //mat.color = c;
-    //}
 }
