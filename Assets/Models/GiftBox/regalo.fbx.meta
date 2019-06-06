@@ -1,41 +1,58 @@
 fileFormatVersion: 2
-guid: 764fae891d2472c4d92cec0fb9c9dbeb
+guid: 100e6a5fb04038949b872a76f9220c11
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: joint1
-    100002: joint2
-    100004: joint3
-    100006: joint4
-    100008: joint5
-    100010: joint6
-    100012: joint7
-    100014: //RootNode
-    100016: polySurface1
-    100018: polySurface4
-    400000: joint1
-    400002: joint2
-    400004: joint3
-    400006: joint4
-    400008: joint5
-    400010: joint6
-    400012: joint7
-    400014: //RootNode
-    400016: polySurface1
-    400018: polySurface4
-    2100000: lambert2
-    4300000: polySurface4
-    4300002: polySurface1
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: polySurface1
-    13700002: polySurface4
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 2a5e1b918846faf40a6214ed0edc978d, type: 2}
+    100000: AMARRA01
+    100002: AMARRA02
+    100004: AMARRA03
+    100006: AMARRA04
+    100008: AMARRA05
+    100010: CAJA
+    100012: CINTA_CAJA
+    100014: CINTA_TAPA
+    100016: //RootNode
+    100018: TAPA
+    400000: AMARRA01
+    400002: AMARRA02
+    400004: AMARRA03
+    400006: AMARRA04
+    400008: AMARRA05
+    400010: CAJA
+    400012: CINTA_CAJA
+    400014: CINTA_TAPA
+    400016: //RootNode
+    400018: TAPA
+    2100000: color_caja
+    2100002: color_cinta
+    2300000: AMARRA01
+    2300002: AMARRA02
+    2300004: AMARRA03
+    2300006: AMARRA04
+    2300008: AMARRA05
+    2300010: CAJA
+    2300012: CINTA_CAJA
+    2300014: CINTA_TAPA
+    2300016: TAPA
+    3300000: AMARRA01
+    3300002: AMARRA02
+    3300004: AMARRA03
+    3300006: AMARRA04
+    3300008: AMARRA05
+    3300010: CAJA
+    3300012: CINTA_CAJA
+    3300014: CINTA_TAPA
+    3300016: TAPA
+    4300000: CAJA
+    4300002: CINTA_CAJA
+    4300004: TAPA
+    4300006: AMARRA01
+    4300008: AMARRA02
+    4300010: AMARRA03
+    4300012: AMARRA04
+    4300014: AMARRA05
+    4300016: CINTA_TAPA
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -110,7 +127,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

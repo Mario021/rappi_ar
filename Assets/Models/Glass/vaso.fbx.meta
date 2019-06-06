@@ -1,20 +1,16 @@
 fileFormatVersion: 2
-guid: c75ccec155ad9f84eae4832c54045e9a
+guid: 225b97e02297ee045939eeb8e2576652
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: color_moneda
+    2100000: color_interior_vaso
+    2100002: color_exterior_vaso
     2300000: //RootNode
     3300000: //RootNode
-    4300000: moneda
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: color_moneda
-    second: {fileID: 2100000, guid: 30c34c28984feeb44b510fe9e6a0ab7c, type: 2}
+    4300000: vaso1
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: af8ab27c37b40d748bcc91f1d95028c5
+guid: 6a8c5b09fb220774f932b1358f967921
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: color_interior_vaso
-    2100002: color_exterior_vaso
+    2100000: lambert2
     2300000: //RootNode
     3300000: //RootNode
-    4300000: vaso:Mesh
+    4300000: billete_curvo
   externalObjects: {}
   materials:
     importMaterials: 1
