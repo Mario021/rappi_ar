@@ -8,24 +8,31 @@ public class S_InitGame_1 : ElementSequence
     public GameObject[] containers;
     public GameObject bag;
     public Material matBag;
+    public Transform contentSpline;
 
     [Header("General")]
     public float[] timeToNextAction;
 
     [Header("Action 1")]
+    // Accion 1: Aparece Mochila rappi
     public float scaleBag = 1f;
     public float timeScale = .3f;
 
     [Header("Action 2")]
+    // Accion 2: Se elevan los contenedores
     public float maxheightContainers = 2f;
     public float timeMovContainer = .3f;
-    public Transform contentSpline;
 
     [Header("Action 3")]
+    // Accion 3: Mochila rappi ingresa en el contenedor central y desaparece 
     public float timeHideBag = .5f;
 
     [Header("Action 4")]
+    // Accion 4: Bajan los contenedores a su posicion inicial
     public float initheightContainers = 0f;
+
+    //----------------------------------------
+    private Animator _animBag = null;
 
     private int _maxSequence = 4;
     private int _currSequence = 0;
@@ -35,6 +42,7 @@ public class S_InitGame_1 : ElementSequence
     void Start()
     {
         _splineBag = GetSplineFromTranform(contentSpline);
+        _animBag = bag.GetComponent<Animator>();
     }
 
     public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
@@ -43,6 +51,8 @@ public class S_InitGame_1 : ElementSequence
 
         Debug.Log("Inicio Secuencia 1");
 
+        _animBag.SetFloat("direction", -1f);
+        _animBag.Play("openningBag", 0, 0f);
         matBag.SetFloat("_Transparency", 0f);
         bag.transform.localScale = Vector3.zero;
 
@@ -100,7 +110,7 @@ public class S_InitGame_1 : ElementSequence
                 }
             case 2:
                 {
-                    //Mochila rappi ingresa en el contenedor central y desaparece 
+                    // Mochila rappi ingresa en el contenedor central y desaparece 
                     LeanTween.move(bag, _splineBag, timeHideBag).setEase(LeanTweenType.easeInSine).setOnComplete(() => 
                     {
                         LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
@@ -118,7 +128,7 @@ public class S_InitGame_1 : ElementSequence
                 {
                     int count = containers.Length;
 
-                    //Bajan los contenedores a su posicion inicial.
+                    // Bajan los contenedores a su posicion inicial.
                     for (int i = 0; i < containers.Length; i++)
                     {
                         LeanTween.move(containers[i],
@@ -143,17 +153,5 @@ public class S_InitGame_1 : ElementSequence
         base.FinishElementAction();
 
         Debug.Log("Final Secuencia 1");
-    }
-
-    private LTSpline GetSplineFromTranform(Transform ts)
-    {
-        Vector3[] arrVectors = new Vector3[ts.childCount];
-
-        for (int i = 0; i < ts.childCount; i++)
-        {
-            arrVectors[i] = ts.GetChild(i).position;
-        }
-
-        return new LTSpline(arrVectors);
     }
 }

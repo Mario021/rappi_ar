@@ -44,4 +44,14 @@ public class Container : MonoBehaviour
     {
         OnSelected.Invoke();
     }
+
+    public Transform GetPositionPrize()
+    {
+        return transform.GetChild(0);
+    }
+
+    public GameObject GetPrize()
+    {
+        return GameObject.CreatePrimitive(PrimitiveType.Cube);
+    }
 }

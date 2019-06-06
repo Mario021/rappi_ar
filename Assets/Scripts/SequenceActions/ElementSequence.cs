@@ -31,4 +31,16 @@ public abstract class ElementSequence : MonoBehaviour
 
         _onFinishActionElement = null;
     }
+
+    protected LTSpline GetSplineFromTranform(Transform ts)
+    {
+        Vector3[] arrVectors = new Vector3[ts.childCount];
+
+        for (int i = 0; i < ts.childCount; i++)
+        {
+            arrVectors[i] = ts.GetChild(i).position;
+        }
+
+        return new LTSpline(arrVectors);
+    }
 }
