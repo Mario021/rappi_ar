@@ -53,7 +53,9 @@ public class S_InitGame_1 : ElementSequence
 
         _animBag.SetFloat("direction", -1f);
         _animBag.Play("openningBag", 0, 0f);
+
         matBag.SetFloat("_Transparency", 0f);
+
         bag.transform.localScale = Vector3.zero;
 
         _currSequence = -1;

@@ -192,11 +192,9 @@ public class S_EndGame_Correct : ElementSequence
                     // Aparece premio girando desde el interior de la mochila
 
                     // premio
-                    _prize = _correctContainer.CreatePrize(posBagPrize);
 
-                    _prize.transform.localScale = Vector3.zero;
-                    _prize.transform.position = posBagPrize.position;
-                    _prize.name = "Prize";
+                    // Crear premio y ubicarlo en el punto de inicio de la mochila
+                    _prize = _correctContainer.CreatePrize(posBagPrize);                   
 
                     LeanTween.move(_prize,
                             posPrize.position,

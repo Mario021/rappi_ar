@@ -55,10 +55,12 @@ public class Container : MonoBehaviour
     public GameObject CreatePrize(Transform parent = null)
     {
         GameObject prize = null;
-        if (parent != null)
-            prize = Instantiate(currPrize, parent);
-        else
-            prize = Instantiate(currPrize);
+
+        prize = Instantiate(currPrize, parent);
+        prize.transform.localScale = Vector3.zero;
+        prize.transform.position = parent.position;
+        prize.name = "Prize";
+        prize.transform.rotation = parent.localRotation;
 
         return prize;
     }

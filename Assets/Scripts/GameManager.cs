@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
 		
 	}
 
+    /// <summary>
+    /// Obtener Informacion de los modelos a cargar (nombre modelo, nombre archivo) de acuerdo
+    /// al tipo de premio.
+    /// </summary>
+    /// <param name="prizeType"></param>
+    /// <returns></returns>
     public DataPrize GetDataPrize(PrizeType prizeType)
     {
         return configData.GetPrizeData(prizeType);

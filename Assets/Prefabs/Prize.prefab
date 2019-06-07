@@ -82,4 +82,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prizeType: 0
   posCoin: {fileID: 4577872825474850}
+  matCoin: {fileID: 2100000, guid: cd787afd3c711c14e8160c0bf86daa73, type: 2}
   isRotating: 0
