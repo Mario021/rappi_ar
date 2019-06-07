@@ -17,8 +17,6 @@ public class PepitoMinigameControl : MonoBehaviour
     // se realiza un movimiento.
     public ConfigTypeMove[] configMoves;
 
-    public GameConfigData gameConfigData;
-
     public float[] velSingleShuffle;
     public float difficulty = 1f;
 
@@ -119,7 +117,7 @@ public class PepitoMinigameControl : MonoBehaviour
     void Start ()
     {
         // Configurar velocidades y dificultad desde data config
-        velSingleShuffle = gameConfigData.velSingleShuffle;
+        velSingleShuffle = GameManager.Instance.GetVelocityShuffleGame();
 
         maxMoves = velSingleShuffle.Length;
 	}

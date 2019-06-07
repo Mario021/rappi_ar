@@ -41,11 +41,18 @@ public class S_EndGame_Correct : ElementSequence
     public Transform posPrize;
     public Transform posBagPrize;
 
+    [Header("Action 6")]
+    // Accion 6: Activar animaciones premio
+    public float velRotationPrize = .8f;
+    public float velCoin = .5f;
+    public float timeSpawnCoin = .2f;
+
     //----------------------------------------
+    private GameObject _prize = null;
     private Container _correctContainer = null;
     private Animator _animBag = null;
 
-    private int _maxSequence = 5;
+    private int _maxSequence = 6;
     private int _currSequence = 0;
 
     void Start()
@@ -63,6 +70,8 @@ public class S_EndGame_Correct : ElementSequence
         _animBag.Play("openningBag", 0, 0f);
         matBag.SetFloat("_Transparency", 0f);
         bag.transform.localScale = Vector3.zero;
+
+        _prize = null;
 
         _currSequence = -1;
 
@@ -183,22 +192,31 @@ public class S_EndGame_Correct : ElementSequence
                     // Aparece premio girando desde el interior de la mochila
 
                     // premio
-                    GameObject p = _correctContainer.GetPrize();
-                    GameObject.Destroy(p.GetComponent<BoxCollider>());
-                    p.transform.localScale = Vector3.zero;
-                    p.transform.position = posBagPrize.position;
-                    p.name = "Prize";
-                    p.transform.SetParent(posBagPrize);
+                    _prize = _correctContainer.CreatePrize(posBagPrize);
 
-                    LeanTween.move(p,
+                    _prize.transform.localScale = Vector3.zero;
+                    _prize.transform.position = posBagPrize.position;
+                    _prize.name = "Prize";
+
+                    LeanTween.move(_prize,
                             posPrize.position,
                             timeShowPrize).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
                             {
-                                LeanTween.delayedCall(timeToNextAction[_currSequence], () => { FinishElementAction(); });
+                                LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                             });
 
-                    LeanTween.scale(p, Vector3.one, timeShowPrize / 1.5f);
+                    LeanTween.scale(_prize, Vector3.one, timeShowPrize / 1.5f);
 
+                    break;
+                }
+            case 5:
+                {
+                    // Activar animaciones premio
+
+                    Prize p = _prize.GetComponent<Prize>();
+                    p.StartAnimation(velRotationPrize, velCoin, timeSpawnCoin);
+
+                    FinishElementAction();
                     break;
                 }
         }

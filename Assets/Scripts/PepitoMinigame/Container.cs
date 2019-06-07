@@ -7,6 +7,8 @@ public class Container : MonoBehaviour
 {
     public int initPos = 0;
 
+    public GameObject currPrize;
+
     public bool HasPrize = false;
     public bool IsMoving = false;
 
@@ -14,7 +16,7 @@ public class Container : MonoBehaviour
 
 	void Start ()
     {
-		
+        HasPrize = (currPrize != null) ;
 	}
 
     public void Move(LTSpline spline, float vel, PepitoMinigameControl.OnFinishShuffleCallback onFinish = null)
@@ -50,8 +52,14 @@ public class Container : MonoBehaviour
         return transform.GetChild(0);
     }
 
-    public GameObject GetPrize()
+    public GameObject CreatePrize(Transform parent = null)
     {
-        return GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject prize = null;
+        if (parent != null)
+            prize = Instantiate(currPrize, parent);
+        else
+            prize = Instantiate(currPrize);
+
+        return prize;
     }
 }

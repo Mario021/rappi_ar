@@ -29,3 +29,13 @@ MonoBehaviour:
   - 0.3
   - 0.3
   - 0.2
+  dataPrize:
+  - namePrize: Caja de Regalo
+    nameFile:
+    - GiftBox
+    prizeType: 0
+  - namePrize: Rappi Creditos
+    nameFile:
+    - Ticket
+    - Coin
+    prizeType: 1

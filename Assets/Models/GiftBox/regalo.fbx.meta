@@ -52,7 +52,17 @@ ModelImporter:
     4300012: AMARRA04
     4300014: AMARRA05
     4300016: CINTA_TAPA
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_caja
+    second: {fileID: 2100000, guid: d4d82c017c2d92840a03c8d4db94801f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_cinta
+    second: {fileID: 2100000, guid: a780bad008196094fbd7463ecabb1fec, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
