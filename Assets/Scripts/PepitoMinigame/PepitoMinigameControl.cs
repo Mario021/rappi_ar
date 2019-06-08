@@ -114,6 +114,27 @@ public class PepitoMinigameControl : MonoBehaviour
         // cr = new LTSpline( new Vector3[] {new Vector3(-1f,0f,0f), new Vector3(0f,0f,0f), new Vector3(4f,0f,0f), new Vector3(20f,0f,0f), new Vector3(30f,0f,0f)} );
     }
 
+    private static PepitoMinigameControl _instance;
+    public static PepitoMinigameControl Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     void Start ()
     {
         // Configurar velocidades y dificultad desde data config

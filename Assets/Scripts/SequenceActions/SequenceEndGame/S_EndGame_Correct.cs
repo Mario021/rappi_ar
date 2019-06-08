@@ -9,6 +9,7 @@ public class S_EndGame_Correct : ElementSequence
     public GameObject[] containers;
     public GameObject bag;
     public Material matBag;
+    public Animator animBag;
 
     [Header("General")]
     // Si el numero es negativo indica que la siguiente accion se ejecuta (en algun momento) al mismo
@@ -53,14 +54,12 @@ public class S_EndGame_Correct : ElementSequence
     //----------------------------------------
     private GameObject _prize = null;
     private Container _correctContainer = null;
-    private Animator _animBag = null;
 
     private int _maxSequence = 5;
     private int _currSequence = 0;
 
     void Start()
     {
-        _animBag = bag.GetComponent<Animator>();
     }
 
     public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
@@ -69,8 +68,8 @@ public class S_EndGame_Correct : ElementSequence
 
         Debug.Log("Inicio Secuencia 2");
 
-        _animBag.SetFloat("direction", -1f);
-        _animBag.Play("openningBag", 0, 0f);
+        animBag.SetFloat("direction", -1f);
+        animBag.Play("openningBag", 0, 0f);
         matBag.SetFloat("_Transparency", 0f);
         bag.transform.localScale = Vector3.zero;
 
@@ -185,11 +184,11 @@ public class S_EndGame_Correct : ElementSequence
                     }
 
                     // Abrir mochila
-                    _animBag.SetFloat("direction", 1f);
-                    _animBag.Play("openningBag", 0, 0);
+                    animBag.SetFloat("direction", 1f);
+                    animBag.Play("openningBag", 0, 0);
 
                     // Obtener largo de la animacion
-                    AnimatorClipInfo[]  m_CurrentClipInfo = _animBag.GetCurrentAnimatorClipInfo(0);
+                    AnimatorClipInfo[]  m_CurrentClipInfo = animBag.GetCurrentAnimatorClipInfo(0);
                     float lenghtAnim = m_CurrentClipInfo[0].clip.length;
 
                     // Terminar accion

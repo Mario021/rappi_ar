@@ -8,6 +8,7 @@ public class S_InitGame_1 : ElementSequence
     public GameObject[] containers;
     public GameObject bag;
     public Material matBag;
+    public Animator animBag;
     public Transform contentSpline;
 
     [Header("General")]
@@ -31,8 +32,7 @@ public class S_InitGame_1 : ElementSequence
     // Accion 4: Bajan los contenedores a su posicion inicial
     public float initheightContainers = 0f;
 
-    //----------------------------------------
-    private Animator _animBag = null;
+    //----------------------------------------  
 
     private int _maxSequence = 4;
     private int _currSequence = 0;
@@ -42,7 +42,7 @@ public class S_InitGame_1 : ElementSequence
     void Start()
     {
         _splineBag = GetSplineFromTranform(contentSpline);
-        _animBag = bag.GetComponent<Animator>();
+        //animBag = bag.GetComponent<Animator>();
     }
 
     public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
@@ -51,8 +51,8 @@ public class S_InitGame_1 : ElementSequence
 
         Debug.Log("Inicio Secuencia 1");
 
-        _animBag.SetFloat("direction", -1f);
-        _animBag.Play("openningBag", 0, 0f);
+        animBag.SetFloat("direction", -1f);
+        animBag.Play("openningBag", 0, 0f);
 
         matBag.SetFloat("_Transparency", 0f);
 

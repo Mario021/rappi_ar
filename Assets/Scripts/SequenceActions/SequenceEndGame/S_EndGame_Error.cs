@@ -8,6 +8,7 @@ public class S_EndGame_Error : ElementSequence
     public GameObject[] containers;
     public GameObject bag;
     public Material matBag;
+    public Animator animBag;
 
     [Header("General")]
     public float[] timeToNextAction;
@@ -26,14 +27,12 @@ public class S_EndGame_Error : ElementSequence
     public Transform pointPosBag;
 
     //----------------------------------------
-    private Animator _animBag = null;
 
     private int _maxSequence = 2;
     private int _currSequence = 0;
 
     void Start()
     {
-        _animBag = bag.GetComponent<Animator>();
     }
 
     public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
@@ -42,8 +41,8 @@ public class S_EndGame_Error : ElementSequence
 
         Debug.Log("Inicio Secuencia 3");
 
-        _animBag.SetFloat("direction", -1f);
-        _animBag.Play("openningBag", 0, 0f);
+        animBag.SetFloat("direction", -1f);
+        animBag.Play("openningBag", 0, 0f);
         matBag.SetFloat("_Transparency", 0f);
         bag.transform.localScale = Vector3.zero;
 

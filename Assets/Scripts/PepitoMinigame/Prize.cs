@@ -8,29 +8,18 @@ public class Prize : MonoBehaviour
 
     public PrizeType prizeType;
 
+    public float scale = 1f;
     public Transform posCoin;
     private GameObject _coin;
     public Material matCoin;
 
-    //private Vector3 vRotation = Vector3.up;
-    //private float velRotation = 0;
-    //public bool isRotating = false;
     private GameObject currPrizeRotate = null;
 
     void Start ()
     {
         prizeType = GameManager.Instance.currPrize;
 
-        //CreatePrize();
     }
-	
-	//void Update ()
- //   {
- //       if (isRotating && currPrizeRotate != null)
- //       {
- //           currPrizeRotate.Rotate(vRotation * velRotation);
- //       }
- //   }
 
     public void CreateElementsPrize(OnFinishCallback onFinish = null)
     {
@@ -59,23 +48,12 @@ public class Prize : MonoBehaviour
             }
 
             p.transform.localPosition = Vector3.zero;
-            p.transform.localScale = Vector3.one;
+            p.transform.localScale = new Vector3(scale, scale, scale);
         }
 
         if (onFinish != null)
             onFinish();
     }
-
-    //public void StartAnimation(float velRotation, float velCoin, float timeSpawnCoin)
-    //{
-    //    StartRotation(velRotation, vRotation);
-
-    //    // Animacion moneda
-    //    if(posCoin.childCount > 0)
-    //    {
-    //        StartAnimCoin(velCoin, timeSpawnCoin);           
-    //    }
-    //}
 
     public void StartAnimCoin(float velCoin, float timeSpawnCoin, float velRotationCoin, Vector3 vCoinRotation)
     {
