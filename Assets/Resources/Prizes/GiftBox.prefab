@@ -87,6 +87,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4675859244304766}
+  - component: {fileID: 114501222594630458}
   m_Layer: 0
   m_Name: GiftBox
   m_TagString: Untagged
@@ -696,3 +697,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1591562269890686}
   m_Mesh: {fileID: 4300008, guid: 100e6a5fb04038949b872a76f9220c11, type: 3}
+--- !u!114 &114501222594630458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587890741845538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80dc2ec77f79e440b5feaa750f9febb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRotating: 0

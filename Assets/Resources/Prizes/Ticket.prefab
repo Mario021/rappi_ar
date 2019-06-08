@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4892415165678522}
   - component: {fileID: 33741883566953832}
   - component: {fileID: 23769314315127320}
+  - component: {fileID: 114374844675401318}
   m_Layer: 0
   m_Name: Ticket
   m_TagString: Untagged
@@ -84,3 +85,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452978237522066}
   m_Mesh: {fileID: 4300000, guid: 9d456fd861ece3f418606388032f7a23, type: 3}
+--- !u!114 &114374844675401318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452978237522066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80dc2ec77f79e440b5feaa750f9febb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRotating: 0

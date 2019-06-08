@@ -12,28 +12,30 @@ public class Prize : MonoBehaviour
     private GameObject _coin;
     public Material matCoin;
 
-    private Vector3 vRotation = Vector3.up;
-    private float velRotation = 0;
-    public bool isRotating = false;
-    private Transform currPrizeRotate = null;
+    //private Vector3 vRotation = Vector3.up;
+    //private float velRotation = 0;
+    //public bool isRotating = false;
+    private GameObject currPrizeRotate = null;
 
     void Start ()
     {
         prizeType = GameManager.Instance.currPrize;
 
-        CreatePrize();
+        //CreatePrize();
     }
 	
-	void Update ()
-    {
-        if (isRotating && currPrizeRotate != null)
-        {
-            currPrizeRotate.Rotate(vRotation * velRotation);
-        }
-    }
+	//void Update ()
+ //   {
+ //       if (isRotating && currPrizeRotate != null)
+ //       {
+ //           currPrizeRotate.Rotate(vRotation * velRotation);
+ //       }
+ //   }
 
-    private void CreatePrize()
+    public void CreateElementsPrize(OnFinishCallback onFinish = null)
     {
+        prizeType = GameManager.Instance.currPrize;
+
         // Obtener nombre de los modelos a cargar
         DataPrize data = GameManager.Instance.GetDataPrize(prizeType);
 
@@ -43,11 +45,11 @@ public class Prize : MonoBehaviour
         {
             // Cargar modelos desde resources
             GameObject p = Instantiate(Resources.Load<GameObject>(pathResources + fileName));
-            p.name = data.namePrize;         
+            p.name = data.namePrize;
 
             if (fileName != "Coin")
             {
-                currPrizeRotate = p.transform;
+                currPrizeRotate = p;
                 p.transform.SetParent(this.transform);
             }
             else
@@ -59,45 +61,53 @@ public class Prize : MonoBehaviour
             p.transform.localPosition = Vector3.zero;
             p.transform.localScale = Vector3.one;
         }
+
+        if (onFinish != null)
+            onFinish();
     }
 
-    public void StartAnimation(float velRotation, float velCoin, float timeSpawnCoin)
-    {
-        StartRotation(velRotation, vRotation);
+    //public void StartAnimation(float velRotation, float velCoin, float timeSpawnCoin)
+    //{
+    //    StartRotation(velRotation, vRotation);
 
-        // Animacion moneda
-        if(posCoin.childCount > 0)
-        {
-            StartAnimCoin(velCoin, timeSpawnCoin);           
-        }
-    }
+    //    // Animacion moneda
+    //    if(posCoin.childCount > 0)
+    //    {
+    //        StartAnimCoin(velCoin, timeSpawnCoin);           
+    //    }
+    //}
 
-    private void StartAnimCoin(float velCoin, float timeSpawnCoin)
+    public void StartAnimCoin(float velCoin, float timeSpawnCoin, float velRotationCoin, Vector3 vCoinRotation)
     {
+        if (posCoin.childCount <= 0)
+            return;
+
         matCoin.SetFloat("_Transparency", 1f);
         _coin.transform.localPosition = Vector3.zero;
+
+        _coin.GetComponent<RotationMovement>().StartRotation(velRotationCoin, vCoinRotation);
 
         Vector3 firstPoint = new Vector3(_coin.transform.position.x, _coin.transform.position.y + 3f, _coin.transform.position.z);
         Vector3 lastPoint = new Vector3(firstPoint.x, firstPoint.y - 1f, firstPoint.z);
 
         // Escalar y fade al aparecer moneda
-        LeanTween.scale(_coin, Vector3.one, velCoin/3).
+        LeanTween.scale(_coin, Vector3.one, velCoin/4).
                     setOnUpdate((float f) =>
                     {
                         matCoin.SetFloat("_Transparency", 1 - f);
                     });
 
         // Movimiento hacia arriba
-        LeanTween.move(_coin, firstPoint, velCoin).setOnComplete(() =>
+        LeanTween.move(_coin, firstPoint, velCoin).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
         {
             // Espera para el siguiente movimiento
-            LeanTween.delayedCall(.3f, () => 
+            LeanTween.delayedCall(.2f, () => 
             {
                 // Movimiento hacia abajo
                 LeanTween.move(_coin, lastPoint, velCoin / 3).setOnComplete(() =>
                 {
                     matCoin.SetFloat("_Transparency", 1f);
-                    LeanTween.delayedCall(timeSpawnCoin, () => { StartAnimCoin(velCoin, timeSpawnCoin); });
+                    LeanTween.delayedCall(timeSpawnCoin, () => { StartAnimCoin(velCoin, timeSpawnCoin, velRotationCoin, vCoinRotation); });
                 }).setOnUpdate((float f) =>
                 {
                     matCoin.SetFloat("_Transparency", f);
@@ -106,7 +116,7 @@ public class Prize : MonoBehaviour
         });
     }
 
-    public void StopAnimation()
+    public void StopAllAnimation()
     {
         StopRotation();
 
@@ -117,18 +127,19 @@ public class Prize : MonoBehaviour
         }
     }
 
-    private void StartRotation(float vel, Vector3 vDir)
+    public void StartRotation(float vel, Vector3 vDir)
     {
-        vRotation = vDir;
-        velRotation = vel;
-
-        isRotating = true;
+        Debug.Log(currPrizeRotate);
+        currPrizeRotate.GetComponent<RotationMovement>().StartRotation(vel, vDir);
     }
 
-    private void StopRotation()
+    public void StopRotation()
     {
-        isRotating = false;
+        currPrizeRotate.GetComponent<RotationMovement>().StopRotation();
     }
+
+    public delegate void OnFinishCallback();
+    public static event OnFinishCallback onFinishCallback;
 }
 
 public enum PrizeType

@@ -11,6 +11,8 @@ public class S_EndGame_Correct : ElementSequence
     public Material matBag;
 
     [Header("General")]
+    // Si el numero es negativo indica que la siguiente accion se ejecuta (en algun momento) al mismo
+    // tiempo que la actual
     public float[] timeToNextAction;
 
     [Header("Action 1")]
@@ -22,6 +24,7 @@ public class S_EndGame_Correct : ElementSequence
     // Accion 2: Se elevan los contenedores
     public float maxheightContainers = 2f;
     public float timeMovContainer = .3f;
+    //public LeanTweenType action2Type;
 
     [Header("Action 3")]
     // Accion 3: Mochila se posiciona al centro
@@ -41,9 +44,9 @@ public class S_EndGame_Correct : ElementSequence
     public Transform posPrize;
     public Transform posBagPrize;
 
-    [Header("Action 6")]
-    // Accion 6: Activar animaciones premio
+    // Animaciones premio
     public float velRotationPrize = .8f;
+    public float velRotationCoin = 10f;
     public float velCoin = .5f;
     public float timeSpawnCoin = .2f;
 
@@ -52,7 +55,7 @@ public class S_EndGame_Correct : ElementSequence
     private Container _correctContainer = null;
     private Animator _animBag = null;
 
-    private int _maxSequence = 6;
+    private int _maxSequence = 5;
     private int _currSequence = 0;
 
     void Start()
@@ -116,7 +119,7 @@ public class S_EndGame_Correct : ElementSequence
    
                     LeanTween.move(bag,
                             new Vector3(bag.transform.position.x, pointPosBag.position.y, bag.transform.position.z),
-                            timeMovContainer).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
+                            timeMovContainer).setEase(LeanTweenType.easeOutBounce).setOnComplete(() =>
                             {
                                 LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                             });
@@ -138,7 +141,7 @@ public class S_EndGame_Correct : ElementSequence
                     {
                         LeanTween.move(containers[i],
                             new Vector3(containers[i].transform.position.x, maxheightContainers, containers[i].transform.position.z),
-                            timeMovContainer).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
+                            timeMovContainer).setEase(LeanTweenType.easeOutQuint).setOnComplete(() =>
                             {
                                 count--;
 
@@ -153,11 +156,18 @@ public class S_EndGame_Correct : ElementSequence
                 }
             case 2:
                 {
-                    // Mochila se posiciona al centro                
- 
-                    LeanTween.move(bag, pointPosBag.position, timetoPosBag).setEase(LeanTweenType.easeInSine).setOnComplete(() =>
+                    // Mochila se posiciona al centro
+
+                    float timeNextMove = timeToNextAction[_currSequence];
+
+                    // Ejecutar la siguiente accion antes de finalizar la actual
+                    if (timeNextMove < 0)
+                        LeanTween.delayedCall(timetoPosBag + timeToNextAction[_currSequence], () => { initNextSequence(); });
+
+                    LeanTween.move(bag, pointPosBag.position, timetoPosBag).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
                     {
-                        LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
+                        if(timeNextMove >= 0)
+                            LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                     });
 
                     break;
@@ -194,29 +204,39 @@ public class S_EndGame_Correct : ElementSequence
                     // premio
 
                     // Crear premio y ubicarlo en el punto de inicio de la mochila
-                    _prize = _correctContainer.CreatePrize(posBagPrize);                   
+                    _prize = _correctContainer.CreatePrize(posBagPrize);
+
+                    // Activar animacion de rotacion premio
+                    Prize p = _prize.GetComponent<Prize>();
+                    p.CreateElementsPrize(() =>
+                    {
+                        p.StartRotation(velRotationPrize, Vector3.up);
+                    });
+                    
 
                     LeanTween.move(_prize,
                             posPrize.position,
                             timeShowPrize).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
                             {
-                                LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
+                                p.StartAnimCoin(velCoin, timeSpawnCoin, velRotationCoin, Vector3.up);
+                                //LeanTween.delayedCall(timeToNextAction[_currSequence], () => { FinishElementAction(); });
+                                FinishElementAction();
                             });
 
                     LeanTween.scale(_prize, Vector3.one, timeShowPrize / 1.5f);
 
                     break;
                 }
-            case 5:
-                {
-                    // Activar animaciones premio
+            //case 5:
+            //    {
+            //        // Activar animaciones monedas
 
-                    Prize p = _prize.GetComponent<Prize>();
-                    p.StartAnimation(velRotationPrize, velCoin, timeSpawnCoin);
+            //        Prize p = _prize.GetComponent<Prize>();
+            //        p.StartAnimation(velRotationPrize, velCoin, timeSpawnCoin);
 
-                    FinishElementAction();
-                    break;
-                }
+            //        FinishElementAction();
+            //        break;
+            //    }
         }
     }
 

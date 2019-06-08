@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     // Premio actual seleccionado
     public PrizeType currPrize = PrizeType.Gift_Box;
 
+    public enum GameState
+    {
+
+    }
+
     private static GameManager _instance;
     public static GameManager Instance
     {
