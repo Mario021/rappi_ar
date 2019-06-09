@@ -101,8 +101,12 @@ public class PepitoMinigameControl : MonoBehaviour
     public bool isShuffling = false;
     public bool AutoShuffle = true;
 
+    // Indica si se ha ganado la partida
+    public bool IsWin = false;
+
     public UnityEvent OnInitMove;
     public UnityEvent OnFinishMove;
+    public UnityEvent OnFinishAllMoves;
 
     public UnityEvent OnInitGame;
     public UnityEvent OnFinishGame;
@@ -139,6 +143,7 @@ public class PepitoMinigameControl : MonoBehaviour
     {
         // Configurar velocidades y dificultad desde data config
         velSingleShuffle = GameManager.Instance.GetVelocityShuffleGame();
+        difficulty = GameManager.Instance.GetValueLevelGame();
 
         maxMoves = velSingleShuffle.Length;
 	}
@@ -157,7 +162,20 @@ public class PepitoMinigameControl : MonoBehaviour
             {                
                 if (hit.collider.CompareTag("Container"))
                 {
-                    hit.collider.GetComponent<Container>().OnSelectContainer();
+                    Container cs = hit.collider.GetComponent<Container>();
+
+                    // Seleccionar container
+                    cs.OnSelectContainer();
+
+                    // Posicion inicial se toma como identificador para desactivar los otros 
+                    // contenedores.
+                    int posContainerSelected = cs.initPos;
+
+                    foreach(Container c in arrContainers)
+                    {
+                        if (c.initPos != posContainerSelected)
+                            c.OnDeselectedContainer();
+                    }
                 }
             }
         }
@@ -172,6 +190,21 @@ public class PepitoMinigameControl : MonoBehaviour
                 if (hit.collider.CompareTag("Container"))
                 {
                     Debug.Log("Container " + hit.collider.name + " clicked");
+
+                    Container cs = hit.collider.GetComponent<Container>();
+
+                    // Seleccionar container
+                    cs.OnSelectContainer();
+
+                    // Posicion inicial se toma como identificador para desactivar los otros 
+                    // contenedores.
+                    int posContainerSelected = cs.initPos;
+
+                    foreach (Container c in arrContainers)
+                    {
+                        if (c.initPos != posContainerSelected)
+                            c.OnDeselectedContainer();
+                    }
                 }
             }
         }
@@ -207,13 +240,33 @@ public class PepitoMinigameControl : MonoBehaviour
         OnInitGame.Invoke();
 
         Invoke("Shuffle", .2f);
-        //Shuffle();
     }
     
     public void FinishGame()
+    {        
+        // Indicar si se ha ganado el juego
+        foreach (Container c in arrContainers)
+        {
+            if (c.IsSelected)
+            {
+                IsWin = c.HasPrize;
+            }
+        }
+
+        GameManager.Instance.FinishGame();
+
+        OnFinishGame.Invoke();
+    }
+
+    private void FinishShuffle()
     {
+        IsWin = false;
         isShuffling = false;
+
+        // Activar seleccion de contenedores
         canSelectContainer = true;
+
+        OnFinishAllMoves.Invoke();
     }
 
     /// <summary>
@@ -321,11 +374,8 @@ public class PepitoMinigameControl : MonoBehaviour
         OnFinishMove.Invoke();
 
         if (_countMoves >= maxMoves)
-        {          
-            FinishGame();
-
-            OnFinishGame.Invoke();
-
+        {
+            FinishShuffle();          
             return;
         }
 
@@ -377,6 +427,20 @@ public class PepitoMinigameControl : MonoBehaviour
             Array.Reverse(arrT);
 
         return new LTSpline(GetVector3fromTransform(arrT));
+    }
+
+    public GameObject GetContainerSelected()
+    {
+        // Indicar si se ha ganado el juego
+        foreach (Container c in arrContainers)
+        {
+            if (c.IsSelected)
+            {
+                return c.gameObject;
+            }
+        }
+
+        return null;
     }
 
     void OnDrawGizmos()

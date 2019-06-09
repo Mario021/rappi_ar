@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public abstract class ElementSequence : MonoBehaviour
 {
-    private SequenceControl.OnFinishElementAction _onFinishActionElement = null;
+    private SequenceControl.OnFinishElementActionCallback _onFinishActionElement = null;
 
     public UnityEvent OnStart;
     public UnityEvent OnFinish;
 
-    public virtual void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
+    public virtual void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
     {
         OnStart.Invoke();
 

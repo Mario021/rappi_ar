@@ -62,11 +62,18 @@ public class S_EndGame_Correct : ElementSequence
     {
     }
 
-    public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
+    public override void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
     {
         base.StartElementAction(onFinish);
 
         Debug.Log("Inicio Secuencia 2");
+
+        // No ejecutar si el jugador ha perdido la partida
+        if (!GameManager.Instance.IsPlayerWinner)
+        {
+            FinishElementAction();
+            return;
+        }
 
         animBag.SetFloat("direction", -1f);
         animBag.Play("openningBag", 0, 0f);

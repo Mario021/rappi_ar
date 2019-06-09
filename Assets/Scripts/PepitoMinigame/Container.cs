@@ -9,10 +9,12 @@ public class Container : MonoBehaviour
 
     public GameObject currPrize;
 
+    public bool IsSelected = false;
     public bool HasPrize = false;
     public bool IsMoving = false;
 
     public UnityEvent OnSelected;
+    public UnityEvent OnDeselected;
 
 	void Start ()
     {
@@ -45,6 +47,19 @@ public class Container : MonoBehaviour
     public void OnSelectContainer()
     {
         OnSelected.Invoke();
+
+        IsSelected = true;
+
+        // Activar interfaz (flecha)
+    }
+
+    public void OnDeselectedContainer()
+    {
+        OnDeselected.Invoke();
+
+        IsSelected = false;
+
+        // Desactivar interfaz (flecha)
     }
 
     public Transform GetPositionPrize()

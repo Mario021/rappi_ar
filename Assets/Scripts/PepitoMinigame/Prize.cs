@@ -65,8 +65,8 @@ public class Prize : MonoBehaviour
 
         _coin.GetComponent<RotationMovement>().StartRotation(velRotationCoin, vCoinRotation);
 
-        Vector3 firstPoint = new Vector3(_coin.transform.position.x, _coin.transform.position.y + 3f, _coin.transform.position.z);
-        Vector3 lastPoint = new Vector3(firstPoint.x, firstPoint.y - 1f, firstPoint.z);
+        Vector3 firstPoint = new Vector3(_coin.transform.position.x, _coin.transform.position.y + 2f, _coin.transform.position.z);
+        Vector3 lastPoint = new Vector3(firstPoint.x, firstPoint.y - .6f, firstPoint.z);
 
         // Escalar y fade al aparecer moneda
         LeanTween.scale(_coin, Vector3.one, velCoin/4).

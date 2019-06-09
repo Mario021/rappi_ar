@@ -45,7 +45,7 @@ public class S_InitGame_1 : ElementSequence
         //animBag = bag.GetComponent<Animator>();
     }
 
-    public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
+    public override void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
     {
         base.StartElementAction(onFinish);
 

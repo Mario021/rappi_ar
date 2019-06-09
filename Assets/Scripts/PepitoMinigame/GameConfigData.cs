@@ -7,12 +7,6 @@ using UnityEngine;
 public class GameConfigData : ScriptableObject
 {
     // Obtener/Configurar dificultades
-    public enum LevelType
-    {
-        Low,
-        Medium,
-        Hard
-    }
 
     [System.Serializable]
     public struct level
@@ -59,4 +53,11 @@ public struct DataPrize
     public string namePrize;
     public string[] nameFile;
     public PrizeType prizeType;
+}
+
+public enum LevelType
+{
+    Low,
+    Medium,
+    Hard
 }

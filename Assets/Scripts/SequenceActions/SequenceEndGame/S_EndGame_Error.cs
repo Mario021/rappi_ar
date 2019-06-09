@@ -35,11 +35,18 @@ public class S_EndGame_Error : ElementSequence
     {
     }
 
-    public override void StartElementAction(SequenceControl.OnFinishElementAction onFinish = null)
+    public override void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
     {
         base.StartElementAction(onFinish);
 
         Debug.Log("Inicio Secuencia 3");
+
+        // No ejecutar si el jugador ha ganado la partida
+        if(GameManager.Instance.IsPlayerWinner)
+        {
+            FinishElementAction();
+            return;
+        }
 
         animBag.SetFloat("direction", -1f);
         animBag.Play("openningBag", 0, 0f);
@@ -109,7 +116,7 @@ public class S_EndGame_Error : ElementSequence
                          new Vector3(bag.transform.position.x, pointPosBag.position.y, bag.transform.position.z),
                          timeMovContainer).setEase(LeanTweenType.easeOutBounce).setOnComplete(() =>
                          {
-                             LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
+                             LeanTween.delayedCall(timeToNextAction[_currSequence], () => { FinishElementAction(); });
                          });
 
                     LeanTween.scale(bag, Vector3.one * 1.1f * scaleBag, timeShowBag / 2).setOnComplete(() =>

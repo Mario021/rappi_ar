@@ -5,16 +5,23 @@ using UnityEngine.Events;
 
 public class SequenceControl : MonoBehaviour
 {
+    // Indica a que estado del juego pertenece
+    public GameState gameStateSequence;
+
     public ElementSequence[] arrElementAction;
 
     public int currElementAction = 0;
 
+    private OnFinishSequenceCallback _onFinishSequence = null;
+
     public UnityEvent OnStartSequence;
     public UnityEvent OnFinishSequence;
 
-    public void StartSequence()
+    public void StartSequence(OnFinishSequenceCallback onFinish = null)
     {
         OnStartSequence.Invoke();
+
+        _onFinishSequence = onFinish;
 
         currElementAction = 0;
 
@@ -24,6 +31,11 @@ public class SequenceControl : MonoBehaviour
     public void FinishSequence()
     {
         OnFinishSequence.Invoke();
+
+        if(_onFinishSequence != null)
+        {
+            _onFinishSequence();
+        }
     }
 
     /// <summary>
@@ -48,7 +60,7 @@ public class SequenceControl : MonoBehaviour
     private void OnFinishedAction()
     {
         // Finalizar secuencia si se han ejecutado todas las acciones.
-        if(currElementAction >= arrElementAction.Length - 1)
+        if(currElementAction >= arrElementAction.Length)
         {
             FinishSequence();
 
@@ -59,6 +71,9 @@ public class SequenceControl : MonoBehaviour
         StartElementAction(currElementAction);
     }
 
-    public delegate void OnFinishElementAction();
-    public static event OnFinishElementAction onFinishAction;
+    public delegate void OnFinishElementActionCallback();
+    public static event OnFinishElementActionCallback onFinishAction;
+
+    public delegate void OnFinishSequenceCallback();
+    public static event OnFinishSequenceCallback onFinishSequence;
 }
