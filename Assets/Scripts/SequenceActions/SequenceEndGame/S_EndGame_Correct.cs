@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class S_EndGame_Correct : ElementSequence
 {
@@ -20,6 +21,7 @@ public class S_EndGame_Correct : ElementSequence
     // Accion 1: Aparece mochila Rappi
     public float scaleBag = 1f;
     public float timeShowBag = .3f;
+    public UnityEvent OnFinishAction1; 
 
     [Header("Action 2")]
     // Accion 2: Se elevan los contenedores
@@ -44,6 +46,7 @@ public class S_EndGame_Correct : ElementSequence
     public float timeShowPrize = .5f;
     public Transform posPrize;
     public Transform posBagPrize;
+    public UnityEvent OnInitAction5;
 
     // Animaciones premio
     public float velRotationPrize = .8f;
@@ -69,7 +72,7 @@ public class S_EndGame_Correct : ElementSequence
         Debug.Log("Inicio Secuencia 2");
 
         // No ejecutar si el jugador ha perdido la partida
-        if (!GameManager.Instance.IsPlayerWinner)
+        if (!(bool)GameManager.Instance.IsPlayerWinner)
         {
             FinishElementAction();
             return;
@@ -115,8 +118,6 @@ public class S_EndGame_Correct : ElementSequence
                 {
                     // Aparece mochila Rappi
 
-                    // TODO aparecer en la posicion del premio
-
                     // Obtener posicion en donde aparece la mochila. La posicion se encuentra en el contenedor 
                     // correcto.
                     Transform initPoint = _correctContainer.GetPositionPrize();
@@ -127,6 +128,8 @@ public class S_EndGame_Correct : ElementSequence
                             new Vector3(bag.transform.position.x, pointPosBag.position.y, bag.transform.position.z),
                             timeMovContainer).setEase(LeanTweenType.easeOutBounce).setOnComplete(() =>
                             {
+                                OnFinishAction1.Invoke();
+
                                 LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });
                             });
 
@@ -207,6 +210,7 @@ public class S_EndGame_Correct : ElementSequence
                 {
                     // Aparece premio girando desde el interior de la mochila
 
+                    OnInitAction5.Invoke();
                     // premio
 
                     // Crear premio y ubicarlo en el punto de inicio de la mochila

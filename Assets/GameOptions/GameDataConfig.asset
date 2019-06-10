@@ -39,3 +39,8 @@ MonoBehaviour:
     - Ticket
     - Coin
     prizeType: 1
+  feedbackGameOver:
+  - IsWinner: 1
+    Message: Buen trabajo, te ganaste
+  - IsWinner: 0
+    Message: "Buena suerte para la pr\xF3xima"

@@ -15,6 +15,13 @@ public class GameConfigData : ScriptableObject
         public float valueLvl;
     }
 
+    [System.Serializable]
+    public struct feedback
+    {
+        public bool IsWinner;
+        public string Message;
+    }
+
     [Header("Niveles del juego")]
     // Niveles disponibles
     public level[] levelsGame;
@@ -25,6 +32,9 @@ public class GameConfigData : ScriptableObject
 
     [Header("references Prize Resources")]
     public DataPrize[] dataPrize;
+
+    [Header("Message feedback on finish game")]
+    public feedback[] feedbackGameOver;
 
     /// <summary>
     /// Obtener valor multiplicador de un nivel.
@@ -44,6 +54,11 @@ public class GameConfigData : ScriptableObject
     public float[] GetVelocityShuffle()
     {
         return velSingleShuffle;
+    }
+
+    public string GetMessageGameOver(bool value)
+    {
+        return feedbackGameOver.Single((f) => f.IsWinner == value).Message;
     }
 }
 

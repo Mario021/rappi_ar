@@ -5,10 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class ARManager : MonoBehaviour
 {
+    // BORRAR
     public TrophiesImageTarget activeTracker;
 
     private PubDataContainer.PubData currPubData;
     private ARMenu _ARMenu;
+
+    // END BORRAR
+
+    public enum StateTracking
+    {
+        FOUND,
+        LOST,
+        SEARCHING
+    }
+
+    public StateTracking currStateTracking = StateTracking.SEARCHING;
+
+    private ARRappiMenu _ARRappiMenu;
 
     private static ARManager _instance;
     public static ARManager Instance
@@ -38,23 +52,25 @@ public class ARManager : MonoBehaviour
             Destroy(this);
         }
 
+        /*
         currPubData = GeneralManager.GetPubSelected();
 
 #if UNITY_EDITOR
         if(currPubData == null) currPubData = GeneralManager.SelectPub(testPubName);
 #endif
         LoadSceneTrackers();
+        */
     }
 
     void Start ()
     {
-        _ARMenu = FindObjectOfType<ARMenu>();
+        _ARRappiMenu = FindObjectOfType<ARRappiMenu>();
 
         // Cambiar feedback interfaz
-        _ARMenu.SetStateTarget(ARMenu.StateTracking.NOT_FOUND);
-        _ARMenu.SetActiveSearchTarget(true);
+        //_ARMenu.SetStateTarget(ARMenu.StateTracking.NOT_FOUND);
+        OnTargetLost();
     }
-	
+	/*
 	void Update ()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -67,13 +83,29 @@ public class ARManager : MonoBehaviour
     {
         SceneManager.LoadScene(GeneralManager.SceneMenuIndex);
     }
-
+    
     void LoadSceneTrackers()
     {
         foreach (GameObject currPrefab in currPubData.trackersPrefab)
         {
             Instantiate(currPrefab);
         }
+    }
+    */
+
+    public void AddTargetReference()
+    {
+        //_ARRappiMenu.SetActiveSearchTarget(false);
+    }
+
+    public void WaitTarget()
+    {
+        //_ARRappiMenu.SetActiveSearchTarget(false);
+    }
+
+    public void OnTargetLost()
+    {
+        //_ARRappiMenu.SetActiveSearchTarget(true);
     }
 
     /// <summary>
@@ -83,32 +115,32 @@ public class ARManager : MonoBehaviour
     public void AddTargetReference(TrophiesImageTarget target)
     {
         // Cambiar feedback interfaz
-        _ARMenu.SetStateTarget(ARMenu.StateTracking.FOUND);
-        _ARMenu.SetActiveSearchTarget(false);
-        _ARMenu.SetInteractableBttnRotation(true);
+        //_ARMenu.SetStateTarget(ARMenu.StateTracking.FOUND);
+        _ARRappiMenu.SetActiveSearchTarget(false);
+        //_ARMenu.SetInteractableBttnRotation(true);
 
-        if (target == activeTracker)
-        {
-            _ARMenu.SetInteractableBttnsTracket(target.GetComponent<ModelARControl>().modelsTarget);
-            return;
-        }
+        //if (target == activeTracker)
+        //{
+        //    _ARMenu.SetInteractableBttnsTracket(target.GetComponent<ModelARControl>().modelsTarget);
+        //    return;
+        //}
 
-        activeTracker = target;
+        //activeTracker = target;
 
         // Agregar botones
-        _ARMenu.FillBttnsTracket(target.GetComponent<ModelARControl>());
+        //_ARMenu.FillBttnsTracket(target.GetComponent<ModelARControl>());
 
     }
 
     /// <summary>
     /// Manejador que modifica al momento de estar al momento de perder el marcador
     /// </summary>
-    public void WaitTarget()
+    public void WaitTarget(int i = 0)
     {
         // Cambiar feedback interfaz
-        _ARMenu.SetStateTarget(ARMenu.StateTracking.NOT_FOUND);
-        _ARMenu.SetActiveSearchTarget(false);
-        _ARMenu.SetInteractableBttnRotation(true);
+        //_ARMenu.SetStateTarget(ARMenu.StateTracking.NOT_FOUND);
+        _ARRappiMenu.SetActiveSearchTarget(false);
+        //_ARMenu.SetInteractableBttnRotation(true);
 
     }
 
@@ -119,12 +151,12 @@ public class ARManager : MonoBehaviour
     public void OnTargetLost(TrophiesImageTarget target)
     {
         // Desactivar botones
-        _ARMenu.SetInteractableBttnsTracket(false);
+        //_ARMenu.SetInteractableBttnsTracket(false);
 
         // Cambiar feedback interfaz
-        _ARMenu.SetStateTarget(ARMenu.StateTracking.SEARCHING);
-        _ARMenu.SetActiveSearchTarget(true);
-        _ARMenu.SetInteractableBttnRotation(false);
+        //_ARMenu.SetStateTarget(ARMenu.StateTracking.SEARCHING);
+        _ARRappiMenu.SetActiveSearchTarget(true);
+        //_ARMenu.SetInteractableBttnRotation(false);
     }
 
     public void ChangeModelTarget(ModelARControl mARControl)

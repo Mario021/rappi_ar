@@ -865,9 +865,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPos: 1
   currPrize: {fileID: 0}
+  IsSelected: 0
   HasPrize: 0
   IsMoving: 0
   OnSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeselected:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -885,9 +891,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPos: 2
   currPrize: {fileID: 0}
+  IsSelected: 0
   HasPrize: 0
   IsMoving: 0
   OnSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeselected:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -905,9 +917,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPos: 0
   currPrize: {fileID: 0}
+  IsSelected: 0
   HasPrize: 0
   IsMoving: 0
   OnSelected:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeselected:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -992,12 +1010,18 @@ MonoBehaviour:
   canNextMove: 0
   isShuffling: 0
   AutoShuffle: 1
+  IsWin: 0
   OnInitMove:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnFinishMove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnFinishAllMoves:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

@@ -42,7 +42,7 @@ public class S_EndGame_Error : ElementSequence
         Debug.Log("Inicio Secuencia 3");
 
         // No ejecutar si el jugador ha ganado la partida
-        if(GameManager.Instance.IsPlayerWinner)
+        if((bool)GameManager.Instance.IsPlayerWinner)
         {
             FinishElementAction();
             return;

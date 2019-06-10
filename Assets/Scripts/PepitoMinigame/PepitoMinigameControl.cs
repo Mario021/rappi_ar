@@ -102,7 +102,7 @@ public class PepitoMinigameControl : MonoBehaviour
     public bool AutoShuffle = true;
 
     // Indica si se ha ganado la partida
-    public bool IsWin = false;
+    public bool? IsWin = null;
 
     public UnityEvent OnInitMove;
     public UnityEvent OnFinishMove;
@@ -110,6 +110,11 @@ public class PepitoMinigameControl : MonoBehaviour
 
     public UnityEvent OnInitGame;
     public UnityEvent OnFinishGame;
+
+    [System.Serializable]
+    public class OnSelectorEvent : UnityEvent<int> { }
+
+    public OnSelectorEvent OnSelectionContainerChange;
 
     void OnEnable()
     {
@@ -176,6 +181,8 @@ public class PepitoMinigameControl : MonoBehaviour
                         if (c.initPos != posContainerSelected)
                             c.OnDeselectedContainer();
                     }
+
+                    OnSelectionContainerChange.Invoke(posContainerSelected);
                 }
             }
         }
@@ -205,6 +212,8 @@ public class PepitoMinigameControl : MonoBehaviour
                         if (c.initPos != posContainerSelected)
                             c.OnDeselectedContainer();
                     }
+
+                    OnSelectionContainerChange.Invoke(posContainerSelected);
                 }
             }
         }
@@ -243,7 +252,8 @@ public class PepitoMinigameControl : MonoBehaviour
     }
     
     public void FinishGame()
-    {        
+    {
+
         // Indicar si se ha ganado el juego
         foreach (Container c in arrContainers)
         {
@@ -260,7 +270,7 @@ public class PepitoMinigameControl : MonoBehaviour
 
     private void FinishShuffle()
     {
-        IsWin = false;
+        IsWin = null;
         isShuffling = false;
 
         // Activar seleccion de contenedores
