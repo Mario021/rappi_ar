@@ -19,7 +19,8 @@ public class Container : MonoBehaviour
 	void Start ()
     {
         HasPrize = (currPrize != null) ;
-	}
+        OnDeselectedContainer();
+    }
 
     public void Move(LTSpline spline, float vel, PepitoMinigameControl.OnFinishShuffleCallback onFinish = null)
     {
