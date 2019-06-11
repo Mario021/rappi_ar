@@ -42,6 +42,7 @@ public class S_InitGame_1 : ElementSequence
     void Start()
     {
         _splineBag = GetSplineFromTranform(contentSpline);
+        matBag.SetFloat("_Transparency", 1f);
         //animBag = bag.GetComponent<Animator>();
     }
 
@@ -51,12 +52,23 @@ public class S_InitGame_1 : ElementSequence
 
         Debug.Log("Inicio Secuencia 1");
 
+        // Inicializar valores de contenedores y mochila
+
         animBag.SetFloat("direction", -1f);
         animBag.Play("openningBag", 0, 0f);
 
         matBag.SetFloat("_Transparency", 0f);
 
         bag.transform.localScale = Vector3.zero;
+
+        // Ubicar mochila al inicio del spline
+        bag.transform.localPosition = contentSpline.GetChild(0).position;
+
+        // Ubicar contenedores en posicion inicial
+        foreach(GameObject go in containers)
+        {
+            go.transform.position = new Vector3(go.transform.position.x, initheightContainers, go.transform.position.z);
+        }
 
         _currSequence = -1;
 
@@ -154,6 +166,19 @@ public class S_InitGame_1 : ElementSequence
     {
         base.FinishElementAction();
 
+        LeanTween.cancel(gameObject);
+        _currSequence = _maxSequence;
+
         Debug.Log("Final Secuencia 1");
+    }
+
+    public override void CancelElementAction()
+    {
+        base.CancelElementAction();
+
+        LeanTween.cancel(gameObject);
+        _currSequence = _maxSequence;
+
+        Debug.Log("Cancelada Secuencia 1");
     }
 }

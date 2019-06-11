@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game")]
     // Indica si el jugador ha ganado la partida
+    public bool IsPaused = false;
     public bool? IsPlayerWinner = false;
 
     private ARRappiMenu _arRappiMenu;
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour
         }
         set
         {
+            if (_currState == value)
+                return;
+
             _lastState = _currState;
 
             _currState = value;
@@ -106,6 +110,42 @@ public class GameManager : MonoBehaviour
 
         CurrState = GameState.Finishing;
     }
+    
+    public void PauseGame()
+    {
+        PauseGame(!IsPaused);
+    }
+
+    public void PauseGame(bool value)
+    {
+        IsPaused = value;
+
+        CurrState = GameState.Searching_Target;
+
+        if (_lastState == GameState.Playing)
+            PepitoMinigameControl.Instance.Pause(IsPaused);
+
+        if (IsPaused)
+        {
+            //CurrState = GameState.Searching_Target;
+
+            //if (_lastState == GameState.Playing)
+            //    PepitoMinigameControl.Instance.Pause(IsPaused);
+
+            if (_lastState == GameState.Starting)
+            {
+                SequenceControl currSeq = _sequenceControls.SingleOrDefault((s) => s.gameStateSequence == GameState.Starting);
+                currSeq.CancelSequence();
+            }
+        }
+        else
+        {
+            //if (_lastState == GameState.Playing)
+            //    PepitoMinigameControl.Instance.Pause(IsPaused);
+
+            CurrState = _lastState;
+        }      
+    }
 
     /// <summary>
     /// Cambiar estado del juego
@@ -123,6 +163,8 @@ public class GameManager : MonoBehaviour
 
     private void OnStateChange()
     {
+        Debug.Log("Estado actual: " + CurrState);
+
         _arRappiMenu.SetActiveSearchTarget(_currState == GameState.Searching_Target);
 
         switch (_currState)
@@ -163,15 +205,28 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             case GameState.Playing:
-                {
+                {                 
+                    // El juego no se reinicia si el juego estuvo en pausa
+                    // Esto se maneja desde el metodo PauseGame
+                    if (_lastState == GameState.Searching_Target)
+                    {                       
+                        if (PepitoMinigameControl.Instance.IsFinishAllMoves())
+                        {
+                            // Activar menu en caso de que el juego haya finalizado los movimientos
+                            _arRappiMenu.SetActiveSelectorContainer(true);
+                        }
+
+                        return;
+                    }
+
                     // Iniciar juego "Revolver contenedores"
                     PepitoMinigameControl.Instance.InitGame();
                     break;
                 }
             case GameState.Finishing:
                 {
-                    _arRappiMenu.SetActiveSelectorContainer(false);
-                  
+                    _arRappiMenu.SetActiveSelectorContainer(false);                 
+
                     // Indicar si ganó o perdió a traves de las secuencias
                     // + Iniciar secuencia "Levantar contenedor escogido"
                     //  ++ Correcto: 
@@ -189,10 +244,24 @@ public class GameManager : MonoBehaviour
                         return;
                     }
 
+                    // No realizar nuevamente la secuencia si se ha pausado el juego.
+                    if (_lastState == GameState.Searching_Target)
+                    {
+                        // Activar interfaz si la secuencia ha finalizado
+                        if (currSeq.IsFinished)
+                        {
+                            // Activar interfaz en caso de finalizada la secuencia
+                            _arRappiMenu.SetActiveMessage(true);
+                            _arRappiMenu.SetActiveCelebration((bool)IsPlayerWinner);
+                        }
+
+                        return;
+                    }
+
                     currSeq.StartSequence(() =>
                     {
                         // Secuencia finalizada
-                        CurrState = GameState.Game_Over;
+                        //CurrState = GameState.Game_Over;
                     });
                     break;
                 }
@@ -202,15 +271,26 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Game Over");
                     _sequenceControls = null;
                     CurrState = GameState.None;
-                    // Reiniciar escena
+
+                    //LeanTween.delayedCall(waitTimeGameOver, () =>
+                    //{
+                    //    // Reiniciar escena
+                    //});
+
                     break;
                 }
             case GameState.Paused:
                 {
                     // Detener juego o secuencia
+
                     break;
                 }
         }
+    }
+
+    public void LoadScene(int idScene)
+    {
+
     }
 
     /// <summary>

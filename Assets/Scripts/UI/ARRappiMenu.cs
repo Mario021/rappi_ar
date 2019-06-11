@@ -44,6 +44,10 @@ public class ARRappiMenu : MonoBehaviour
     /// </summary>
     public void SetActiveWaitInitGame(bool value)
     {
+        // Evita activar interfaz cuando se esta en pausa
+        if (GameManager.Instance.IsPaused && value)
+            return;
+
         startGameContent.setActiveWindow(value);
     }
 
@@ -52,11 +56,19 @@ public class ARRappiMenu : MonoBehaviour
     /// </summary>
     public void SetActiveSelectorContainer(bool value)
     {
+        // Evita activar interfaz cuando se esta en pausa
+        if (GameManager.Instance.IsPaused && value)
+            return;
+
         selectorContainer.setActiveWindow(value);
     }
 
     public void SetActiveMessage(bool value)
     {
+        // Evita activar interfaz cuando se esta en pausa
+        if (GameManager.Instance.IsPaused && value)
+            return;
+
         if (value)
         {
             feedbackMessage.setActiveWindow(true);
@@ -75,6 +87,10 @@ public class ARRappiMenu : MonoBehaviour
     /// <param name="value"></param>
     public void SetActiveCelebration(bool value)
     {
+        // Evita activar interfaz cuando se esta en pausa
+        if (GameManager.Instance.IsPaused && value)
+            return;
+
         Debug.Log("Celebracion!: " + value);
     }
 
@@ -84,6 +100,10 @@ public class ARRappiMenu : MonoBehaviour
     /// <param name="time"> Tiempo que se muestra el efecto</param>
     public void ActiveAmaze(float time)
     {
+        // Evita activar interfaz cuando se esta en pausa
+        if (GameManager.Instance.IsPaused)
+            return;
+
         Debug.Log("Asombrado!");
     }
 
@@ -97,6 +117,13 @@ public class ARRappiMenu : MonoBehaviour
 
         if (value)
         {
+            // Desactivar las interfaces activas
+            SetActiveCelebration(false);
+            SetActiveMessage(false);
+            SetActiveSelectorContainer(false);
+            SetActiveWaitInitGame(false);
+
+            // Activar interfaz
             Image imgSearching = imgSearchTarget.GetComponent<Image>();
 
             // Modificar alfa de la imagen entre dos valores

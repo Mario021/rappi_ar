@@ -9,6 +9,7 @@ public abstract class ElementSequence : MonoBehaviour
 
     public UnityEvent OnStart;
     public UnityEvent OnFinish;
+    public UnityEvent OnCancel;
 
     public virtual void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
     {
@@ -28,6 +29,13 @@ public abstract class ElementSequence : MonoBehaviour
         {
             _onFinishActionElement();
         }
+
+        _onFinishActionElement = null;
+    }
+
+    public virtual void CancelElementAction()
+    {
+        OnCancel.Invoke();
 
         _onFinishActionElement = null;
     }

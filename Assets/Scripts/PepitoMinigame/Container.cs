@@ -36,6 +36,14 @@ public class Container : MonoBehaviour
         );
     }
 
+    public void PauseMove(bool value)
+    {       
+        if (value) LeanTween.pause(gameObject);
+        else LeanTween.resume(gameObject);
+
+        Debug.Log("Is pause " + gameObject.name + ": " + LeanTween.isPaused(gameObject));
+    }
+
     /// <summary>
     /// Obtener index inicial del objeto en el juego.
     /// </summary>

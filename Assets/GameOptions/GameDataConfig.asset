@@ -13,22 +13,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsGame:
   - levelType: 0
-    valueLvl: 1
+    valueLvl: 1.1
   - levelType: 1
-    valueLvl: 0.8
+    valueLvl: 0.7
   - levelType: 2
-    valueLvl: 0.6
+    valueLvl: 0.4
   velSingleShuffle:
   - 1
   - 1
   - 1
+  - 0.8
   - 0.65
-  - 0.65
-  - 0.65
-  - 0.3
-  - 0.3
-  - 0.3
-  - 0.2
+  - 0.6
+  - 0.5
+  - 0.6
+  - 0.4
+  - 0.5
   dataPrize:
   - namePrize: Caja de Regalo
     nameFile:

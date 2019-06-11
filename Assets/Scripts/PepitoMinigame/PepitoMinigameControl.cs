@@ -399,6 +399,19 @@ public class PepitoMinigameControl : MonoBehaviour
         }
     }
 
+    public void Pause(bool value)
+    {
+        foreach(Container c in arrContainers)
+        {
+            c.PauseMove(value);
+        }
+    }
+
+    public bool IsFinishAllMoves()
+    {
+        return (maxMoves <= _countMoves);
+    }
+
     /// <summary>
     /// Obtener arreglo de vectores a partir de un arreglo de Transform
     /// </summary>

@@ -12,10 +12,13 @@ public class SequenceControl : MonoBehaviour
 
     public int currElementAction = 0;
 
+    public bool IsFinished = false;
+
     private OnFinishSequenceCallback _onFinishSequence = null;
 
     public UnityEvent OnStartSequence;
     public UnityEvent OnFinishSequence;
+    public UnityEvent OnCancelSequence;
 
     public void StartSequence(OnFinishSequenceCallback onFinish = null)
     {
@@ -25,16 +28,30 @@ public class SequenceControl : MonoBehaviour
 
         currElementAction = 0;
 
+        IsFinished = false;
+
         StartElementAction(currElementAction);
     }
 
     public void FinishSequence()
     {
+        IsFinished = true;
+
         OnFinishSequence.Invoke();
 
         if(_onFinishSequence != null)
         {
             _onFinishSequence();
+        }
+    }
+
+    public void CancelSequence()
+    {
+        OnCancelSequence.Invoke();
+
+        foreach(ElementSequence es in arrElementAction)
+        {
+            es.CancelElementAction();
         }
     }
 
