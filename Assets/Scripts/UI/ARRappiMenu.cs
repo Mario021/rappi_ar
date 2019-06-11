@@ -15,6 +15,10 @@ public class ARRappiMenu : MonoBehaviour
     public WindowMovement selectorContainer;
     public TextMeshProUGUI textMessage;
 
+    [Header("Finish Game")]
+    // interfaz de seleccion de contenedor
+    public WindowMovement finishGameContent;
+
     [Header("Amaze")]
     // Interfaz "asombrar" al escoger la opcion correcta
 
@@ -39,6 +43,16 @@ public class ARRappiMenu : MonoBehaviour
         GameManager.Instance.StartGame();
     }
 
+    public void RestartGame()
+    {
+
+    }
+
+    public void GoToMainMenu()
+    {
+
+    }
+
     /// <summary>
     /// Mostrar/Ocultar interfaz para iniciar juego
     /// </summary>
@@ -61,6 +75,18 @@ public class ARRappiMenu : MonoBehaviour
             return;
 
         selectorContainer.setActiveWindow(value);
+    }
+
+    /// <summary>
+    /// Mostrar/Ocultar interfaz final juego
+    /// </summary>
+    public void SetActiveFinishGame(bool value)
+    {
+        // Evita activar interfaz cuando se esta en pausa
+        if (GameManager.Instance.IsPaused && value)
+            return;
+
+        finishGameContent.setActiveWindow(value);
     }
 
     public void SetActiveMessage(bool value)
@@ -122,6 +148,7 @@ public class ARRappiMenu : MonoBehaviour
             SetActiveMessage(false);
             SetActiveSelectorContainer(false);
             SetActiveWaitInitGame(false);
+            SetActiveFinishGame(false);
 
             // Activar interfaz
             Image imgSearching = imgSearchTarget.GetComponent<Image>();

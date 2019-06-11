@@ -225,8 +225,8 @@ public class GameManager : MonoBehaviour
                 }
             case GameState.Finishing:
                 {
-                    _arRappiMenu.SetActiveSelectorContainer(false);                 
-
+                    _arRappiMenu.SetActiveSelectorContainer(false);
+                    
                     // Indicar si ganó o perdió a traves de las secuencias
                     // + Iniciar secuencia "Levantar contenedor escogido"
                     //  ++ Correcto: 
@@ -252,6 +252,7 @@ public class GameManager : MonoBehaviour
                         {
                             // Activar interfaz en caso de finalizada la secuencia
                             _arRappiMenu.SetActiveMessage(true);
+                            _arRappiMenu.SetActiveFinishGame(true);
                             _arRappiMenu.SetActiveCelebration((bool)IsPlayerWinner);
                         }
 
@@ -262,6 +263,7 @@ public class GameManager : MonoBehaviour
                     {
                         // Secuencia finalizada
                         //CurrState = GameState.Game_Over;
+                        _arRappiMenu.SetActiveFinishGame(true);
                     });
                     break;
                 }
