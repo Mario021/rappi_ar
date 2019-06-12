@@ -22,8 +22,6 @@ public class ARManager : MonoBehaviour
 
     public StateTracking currStateTracking = StateTracking.SEARCHING;
 
-    private ARRappiMenu _ARRappiMenu;
-
     private static ARManager _instance;
     public static ARManager Instance
     {
@@ -64,83 +62,34 @@ public class ARManager : MonoBehaviour
 
     void Start ()
     {
-        _ARRappiMenu = FindObjectOfType<ARRappiMenu>();
 
-        // Cambiar feedback interfaz
-        //_ARMenu.SetStateTarget(ARMenu.StateTracking.NOT_FOUND);
-        OnTargetLost();
     }
-	/*
-	void Update ()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            GoBack();
-        }
-    }
-
-    public void GoBack()
-    {
-        SceneManager.LoadScene(GeneralManager.SceneMenuIndex);
-    }
-    
-    void LoadSceneTrackers()
-    {
-        foreach (GameObject currPrefab in currPubData.trackersPrefab)
-        {
-            Instantiate(currPrefab);
-        }
-    }
-    */
 
     public void AddTargetReference()
     {
-        //_ARRappiMenu.SetActiveSearchTarget(false);
-    }
-
-    public void WaitTarget()
-    {
-        //_ARRappiMenu.SetActiveSearchTarget(false);
+        GameManager.Instance.PauseGame(false);
     }
 
     public void OnTargetLost()
     {
-        //_ARRappiMenu.SetActiveSearchTarget(true);
+        GameManager.Instance.PauseGame(true);
     }
 
+    #region ELIMINAR CODIGO
     /// <summary>
     /// Manejador que modifica al momento de indentificar un modelo.
     /// </summary>
     /// <param name="target"></param>
     public void AddTargetReference(TrophiesImageTarget target)
     {
-        // Cambiar feedback interfaz
-        //_ARMenu.SetStateTarget(ARMenu.StateTracking.FOUND);
-        _ARRappiMenu.SetActiveSearchTarget(false);
-        //_ARMenu.SetInteractableBttnRotation(true);
-
-        //if (target == activeTracker)
-        //{
-        //    _ARMenu.SetInteractableBttnsTracket(target.GetComponent<ModelARControl>().modelsTarget);
-        //    return;
-        //}
-
-        //activeTracker = target;
-
-        // Agregar botones
-        //_ARMenu.FillBttnsTracket(target.GetComponent<ModelARControl>());
 
     }
 
     /// <summary>
     /// Manejador que modifica al momento de estar al momento de perder el marcador
     /// </summary>
-    public void WaitTarget(int i = 0)
+    public void WaitTarget()
     {
-        // Cambiar feedback interfaz
-        //_ARMenu.SetStateTarget(ARMenu.StateTracking.NOT_FOUND);
-        _ARRappiMenu.SetActiveSearchTarget(false);
-        //_ARMenu.SetInteractableBttnRotation(true);
 
     }
 
@@ -150,17 +99,12 @@ public class ARManager : MonoBehaviour
     /// <param name="target"></param>
     public void OnTargetLost(TrophiesImageTarget target)
     {
-        // Desactivar botones
-        //_ARMenu.SetInteractableBttnsTracket(false);
 
-        // Cambiar feedback interfaz
-        //_ARMenu.SetStateTarget(ARMenu.StateTracking.SEARCHING);
-        _ARRappiMenu.SetActiveSearchTarget(true);
-        //_ARMenu.SetInteractableBttnRotation(false);
     }
 
     public void ChangeModelTarget(ModelARControl mARControl)
     {
-        //_ARMenu.SetInteractableBttnsTracket(mARControl.modelsTarget);
+
     }
+    #endregion
 }

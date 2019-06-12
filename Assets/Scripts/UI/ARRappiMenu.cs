@@ -19,8 +19,9 @@ public class ARRappiMenu : MonoBehaviour
     // interfaz de seleccion de contenedor
     public WindowMovement finishGameContent;
 
-    [Header("Amaze")]
-    // Interfaz "asombrar" al escoger la opcion correcta
+    [Header("Celebration")]
+    // Particulas de celebracion
+    public ParticleSystem particleCelebration;
 
     [Header("Message Feedback")]
     // Interfaz mensaje de feedback
@@ -117,7 +118,10 @@ public class ARRappiMenu : MonoBehaviour
         if (GameManager.Instance.IsPaused && value)
             return;
 
-        Debug.Log("Celebracion!: " + value);
+        if (value)
+            particleCelebration.Play(true);
+        else
+            particleCelebration.Stop(true);
     }
 
     /// <summary>

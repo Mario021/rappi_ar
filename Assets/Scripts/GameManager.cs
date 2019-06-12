@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
     {
-        StartTestGame();
+        InitGame();
     }
 
     public void StartTestGame()
@@ -85,9 +85,10 @@ public class GameManager : MonoBehaviour
     {
         // Buscar todas las secuencias en la escena
         _sequenceControls = FindObjectsOfType<SequenceControl>();
-
+        _arRappiMenu = FindObjectOfType<ARRappiMenu>();
 
         CurrState = GameState.Searching_Target;
+        _lastState = GameState.Waiting_Initialize;
     }
 
     public void StartGame()
