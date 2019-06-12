@@ -31,6 +31,7 @@ public class GameConfigData : ScriptableObject
     public float[] velSingleShuffle;
 
     [Header("references Prize Resources")]
+    // Premios disponibles
     public DataPrize[] dataPrize;
 
     [Header("Message feedback on finish game")]
@@ -46,9 +47,14 @@ public class GameConfigData : ScriptableObject
         return levelsGame.Single((l) => l.levelType == lvlType).valueLvl;
     }
 
-    public DataPrize GetPrizeData(PrizeType prize)
+    public DataPrize GetDataPrize(PrizeType prize)
     {
         return dataPrize.Single((p) => p.prizeType == prize);
+    }
+
+    public DataPrize[] GetAllDataPrizes()
+    {
+        return dataPrize;
     }
 
     public float[] GetVelocityShuffle()
@@ -67,6 +73,7 @@ public struct DataPrize
 {
     public string namePrize;
     public string[] nameFile;
+    public Sprite iconPrize;
     public PrizeType prizeType;
 }
 

@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_ProjectAssets/Scenes/Exponor/menu_exponor.unity
-    guid: 25f85b946117ce041b189a715e860102
+    path: Assets/Scenes/Rappi_MainMenu.unity
+    guid: aa3d47ec23499a14d8a2875f8ba5e6d4
   - enabled: 1
-    path: Assets/_ProjectAssets/Scenes/Exponor/AR CAMERA - Exponor.unity
-    guid: d71643600bf1d164eb500a66f041f840
+    path: Assets/Scenes/Rappi_Game.unity
+    guid: 0758d1c2ad6406940acb85194b02610d
   m_configObjects: {}

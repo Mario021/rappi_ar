@@ -33,12 +33,14 @@ MonoBehaviour:
   - namePrize: Caja de Regalo
     nameFile:
     - GiftBox
-    prizeType: 0
+    iconPrize: {fileID: 21300000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+    prizeType: 1
   - namePrize: Rappi Creditos
     nameFile:
     - Ticket
     - Coin
-    prizeType: 1
+    iconPrize: {fileID: 21300000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+    prizeType: 2
   feedbackGameOver:
   - IsWinner: 1
     Message: Buen trabajo, te ganaste

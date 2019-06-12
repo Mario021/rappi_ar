@@ -36,8 +36,8 @@ public class ARRappiMenu : MonoBehaviour
 
     void Start ()
     {
-		
-	}
+        particleCelebration.Stop(true);
+    }
 
     public void StartGame()
     {
@@ -46,12 +46,12 @@ public class ARRappiMenu : MonoBehaviour
 
     public void RestartGame()
     {
-
+        GameManager.Instance.LoadScene(GameManager.Instance.idSceneAR);
     }
 
     public void GoToMainMenu()
     {
-
+        GameManager.Instance.LoadScene(GameManager.Instance.idSceneMainMenu);
     }
 
     /// <summary>

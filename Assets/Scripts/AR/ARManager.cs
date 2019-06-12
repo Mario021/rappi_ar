@@ -62,7 +62,7 @@ public class ARManager : MonoBehaviour
 
     void Start ()
     {
-
+        GameManager.Instance.InitGame();
     }
 
     public void AddTargetReference()

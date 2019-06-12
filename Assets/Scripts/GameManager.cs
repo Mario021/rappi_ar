@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Data Configuration Game")]
     public GameConfigData configData;
+    public int idSceneMainMenu;
+    public int idSceneAR;
 
     [Header("Options Selected")]
     // Premio actual seleccionado
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
     {
-        InitGame();
+        //InitGame();
     }
 
     public void StartTestGame()
@@ -293,7 +296,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(int idScene)
     {
+        CurrState = GameState.None;
+        _lastState = GameState.None;
 
+        SceneManager.LoadScene(idScene);
     }
 
     /// <summary>
@@ -304,7 +310,12 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public DataPrize GetDataPrize(PrizeType prizeType)
     {
-        return configData.GetPrizeData(prizeType);
+        return configData.GetDataPrize(prizeType);
+    }
+
+    public DataPrize[] GetAllDataPrize()
+    {
+        return configData.GetAllDataPrizes();
     }
 
     public float[] GetVelocityShuffleGame()

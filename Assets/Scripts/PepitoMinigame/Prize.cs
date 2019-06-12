@@ -122,6 +122,7 @@ public class Prize : MonoBehaviour
 
 public enum PrizeType
 {
+    None,
     Gift_Box,
     Credits     // Billete
 }
