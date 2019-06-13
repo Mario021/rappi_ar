@@ -30,13 +30,19 @@ public class ARRappiMenu : MonoBehaviour
     [Header("UI Sound")]
     public Button bttnSound;
 
+    private MusicControl _musicControl;
+
     [Header("Feedback Tracking")]
     public RectTransform imgSearchTarget;
     public float timeAlphaTransition = .8f;
 
     void Start ()
     {
+        _musicControl = FindObjectOfType<MusicControl>();
+
         particleCelebration.Stop(true);
+
+        SetActiveSearchTarget(true);
     }
 
     public void StartGame()
@@ -153,19 +159,30 @@ public class ARRappiMenu : MonoBehaviour
             SetActiveWaitInitGame(false);
             SetActiveFinishGame(false);
 
-            // Activar interfaz
+            // Reiniciar valores
             Image imgSearching = imgSearchTarget.GetComponent<Image>();
+            imgSearching.color = new Color(imgSearching.color.r, imgSearching.color.g, imgSearching.color.b, 1f);
+            Text textChild = imgSearchTarget.GetComponentInChildren<Text>();
+            textChild.color = new Color(textChild.color.r, textChild.color.g, textChild.color.b, 1f);
 
-            // Modificar alfa de la imagen entre dos valores
-            LeanTween.value(gameObject, .2f, 1f, timeAlphaTransition).setOnUpdate((float val) => {
-                var tempColor = imgSearching.color;
-                tempColor.a = val;
-                imgSearching.color = tempColor;
-            }).setLoopPingPong();
+            // Activar interfaz
+            //Image imgSearching = imgSearchTarget.GetComponent<Image>();
+            Debug.Log("SET ALPHA: " + imgSearching.color);
+
+            LeanTween.alpha(imgSearchTarget, .2f, timeAlphaTransition).setLoopPingPong();
         }
         else
         {
             LeanTween.cancel(imgSearchTarget);
         }
+    }
+
+    public void SetAudio()
+    {
+        bool HasAudio = !_musicControl.hasAudio;
+
+        _musicControl.setAudio(HasAudio);
+
+        //TODO : Cambiar boton audio
     }
 }

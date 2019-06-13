@@ -16,8 +16,12 @@ public class RappiMainMenu : MonoBehaviour
     public GameObject prefUIPrizeElement;
     public Transform ContentPrizes;
 
-	void Start ()
+    private MusicControl _musicControl;
+
+    void Start ()
     {
+        _musicControl = FindObjectOfType<MusicControl>();
+
         SetInfoSelectorPrize();
     }
 
@@ -79,6 +83,11 @@ public class RappiMainMenu : MonoBehaviour
             return;
 
         GameManager.Instance.LoadScene(GameManager.Instance.idSceneAR);
+    }
+
+    public void SetAudio(bool value)
+    {
+        _musicControl.setAudio(value);
     }
 
     public void CloseApplication()

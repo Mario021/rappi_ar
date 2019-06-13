@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool? IsPlayerWinner = false;
 
     private ARRappiMenu _arRappiMenu;
+    private MusicControl _musicControl;
+    private LoaderScene _loaderScene;
 
     private GameState _currState = GameState.None;
     private GameState _lastState = GameState.None;
@@ -71,17 +73,8 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
     {
-        //InitGame();
-    }
-
-    public void StartTestGame()
-    {
-        /*Test*/
-        _arRappiMenu = FindObjectOfType<ARRappiMenu>();
-        _sequenceControls = FindObjectsOfType<SequenceControl>();
-        CurrState = GameState.Waiting_Initialize;
-        //StartGame();
-        /*End Test*/
+        _musicControl = FindObjectOfType<MusicControl>();
+        _loaderScene = FindObjectOfType<LoaderScene>();
     }
 
     public void InitGame()
@@ -92,6 +85,8 @@ public class GameManager : MonoBehaviour
 
         CurrState = GameState.Searching_Target;
         _lastState = GameState.Waiting_Initialize;
+
+        _musicControl.SetMusicVolume(1f);
     }
 
     public void StartGame()
@@ -297,7 +292,7 @@ public class GameManager : MonoBehaviour
         CurrState = GameState.None;
         _lastState = GameState.None;
 
-        SceneManager.LoadScene(idScene);
+        _loaderScene.LoadScene(idScene);
     }
 
     /// <summary>

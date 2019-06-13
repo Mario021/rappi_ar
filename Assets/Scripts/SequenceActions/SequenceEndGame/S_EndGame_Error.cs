@@ -122,7 +122,14 @@ public class S_EndGame_Error : ElementSequence
                          new Vector3(bag.transform.position.x, pointPosBag.position.y, bag.transform.position.z),
                          timeMovContainer).setEase(LeanTweenType.easeOutBounce).setOnComplete(() =>
                          {
-                             LeanTween.delayedCall(timeToNextAction[_currSequence], () => { FinishElementAction(); });
+                             LeanTween.delayedCall(timeToNextAction[_currSequence], () => 
+                             {
+                                 MusicControl mc = FindObjectOfType<MusicControl>();
+                                 mc.SetMusicVolume(.35f);
+                                 PlaySound(mc.clipDefeat);
+
+                                 FinishElementAction();
+                             });
                          });
 
                     LeanTween.scale(bag, Vector3.one * 1.1f * scaleBag, timeShowBag / 2).setOnComplete(() =>
@@ -138,7 +145,7 @@ public class S_EndGame_Error : ElementSequence
     public override void FinishElementAction()
     {
         base.FinishElementAction();
-
+    
         Debug.Log("Final Secuencia 3");
     }
 }

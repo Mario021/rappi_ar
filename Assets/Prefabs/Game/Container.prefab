@@ -277,7 +277,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9e8bfe8dc74603f4b86536eb7fdb32b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 790df5234124873488e174113db783b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -331,6 +331,9 @@ MonoBehaviour:
   IsSelected: 0
   HasPrize: 0
   IsMoving: 0
+  audioOutput: {fileID: 0}
+  clipOnSelected: {fileID: 0}
+  clipOnMove: {fileID: 0}
   OnSelected:
     m_PersistentCalls:
       m_Calls:
@@ -419,7 +422,7 @@ RectTransform:
   m_GameObject: {fileID: 1427981219896758}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_Children: []
   m_Father: {fileID: 224614208182474668}
   m_RootOrder: 0

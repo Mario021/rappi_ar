@@ -1999,14 +1999,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114829309667606618, guid: e16a2e4907e2daa4cba4b55c4702ffa5,
+    - target: {fileID: 114785708060571170, guid: e16a2e4907e2daa4cba4b55c4702ffa5,
         type: 2}
-      propertyPath: currPrize
-      value: 0
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114785708060571170, guid: e16a2e4907e2daa4cba4b55c4702ffa5,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114829309667606618, guid: e16a2e4907e2daa4cba4b55c4702ffa5,
         type: 2}
-      propertyPath: currDifficulty
+      propertyPath: currPrize
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
