@@ -49,8 +49,8 @@ public class S_Lift_Container_Selection : ElementSequence
                     GameObject container = PepitoMinigameControl.Instance.GetContainerSelected();
 
                     // Se elevar contenedor
-                    LeanTween.move(container,
-                            new Vector3(container.transform.position.x, maxheightContainer, container.transform.position.z),
+                    LeanTween.moveLocal(container,
+                            new Vector3(container.transform.localPosition.x, maxheightContainer, container.transform.localPosition.z),
                             timeMovContainer).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
                             {
                                 LeanTween.delayedCall(timeToNextAction[_currSequence], () => { FinishElementAction(); });

@@ -62,12 +62,12 @@ public class S_InitGame_1 : ElementSequence
         bag.transform.localScale = Vector3.zero;
 
         // Ubicar mochila al inicio del spline
-        bag.transform.localPosition = contentSpline.GetChild(0).position;
+        bag.transform.position = contentSpline.GetChild(0).position;
 
         // Ubicar contenedores en posicion inicial
         foreach(GameObject go in containers)
         {
-            go.transform.position = new Vector3(go.transform.position.x, initheightContainers, go.transform.position.z);
+            go.transform.localPosition = new Vector3(go.transform.localPosition.x, initheightContainers, go.transform.localPosition.z);
         }
 
         _currSequence = -1;
@@ -107,8 +107,8 @@ public class S_InitGame_1 : ElementSequence
                     // Se elevan los contenedores
                     for(int i = 0; i < containers.Length; i++)
                     {
-                        LeanTween.move(containers[i], 
-                            new Vector3(containers[i].transform.position.x, maxheightContainers, containers[i].transform.position.z), 
+                        LeanTween.moveLocal(containers[i], 
+                            new Vector3(containers[i].transform.localPosition.x, maxheightContainers, containers[i].transform.localPosition.z), 
                             timeMovContainer).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
                         {
                             count--;
@@ -145,8 +145,8 @@ public class S_InitGame_1 : ElementSequence
                     // Bajan los contenedores a su posicion inicial.
                     for (int i = 0; i < containers.Length; i++)
                     {
-                        LeanTween.move(containers[i],
-                            new Vector3(containers[i].transform.position.x, initheightContainers, containers[i].transform.position.z),
+                        LeanTween.moveLocal(containers[i],
+                            new Vector3(containers[i].transform.localPosition.x, initheightContainers, containers[i].transform.localPosition.z),
                             timeMovContainer).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
                             {
                                 count--;

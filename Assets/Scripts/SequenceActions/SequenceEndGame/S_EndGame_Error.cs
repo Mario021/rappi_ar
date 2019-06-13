@@ -79,8 +79,8 @@ public class S_EndGame_Error : ElementSequence
 
                     for (int i = 0; i < containers.Length; i++)
                     {
-                        LeanTween.move(containers[i],
-                            new Vector3(containers[i].transform.position.x, maxheightContainers, containers[i].transform.position.z),
+                        LeanTween.moveLocal(containers[i],
+                            new Vector3(containers[i].transform.localPosition.x, maxheightContainers, containers[i].transform.localPosition.z),
                             timeMovContainer).setEase(LeanTweenType.easeOutQuint).setOnComplete(() =>
                             {
                                 count--;

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: AARC Apps
-  productName: AR Demo
+  productName: AR Rappi
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -117,7 +117,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 4.3.2
+  bundleVersion: 1.0.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -150,7 +150,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: me.clyc.aarc.trophiesar
+    Android: me.clyc.aarc.rappiAR
     iOS: com.AARCApps.Trophies
   buildNumber:
     iOS: 2
@@ -259,7 +259,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      m_Icon: {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -267,43 +267,43 @@ PlayerSettings:
   - m_BuildTarget: Android
     m_Icons:
     - m_Textures:
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
-      - {fileID: 2800000, guid: 28f6e8b3508c49548944417042a6e1fc, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
+      - {fileID: 2800000, guid: afd550514d1f0fd4e9445ede37b9d3f7, type: 3}
       m_Width: 81
       m_Height: 81
       m_Kind: 2
