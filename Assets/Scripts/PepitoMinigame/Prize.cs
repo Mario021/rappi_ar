@@ -65,7 +65,7 @@ public class Prize : MonoBehaviour
 
         _coin.GetComponent<RotationMovement>().StartRotation(velRotationCoin, vCoinRotation);
 
-        Vector3 firstPoint = new Vector3(_coin.transform.position.x, _coin.transform.position.y + 2f, _coin.transform.position.z);
+        Vector3 firstPoint = new Vector3(_coin.transform.localPosition.x, _coin.transform.localPosition.y + 2f, _coin.transform.localPosition.z);
         Vector3 lastPoint = new Vector3(firstPoint.x, firstPoint.y - .6f, firstPoint.z);
 
         // Escalar y fade al aparecer moneda
@@ -76,13 +76,13 @@ public class Prize : MonoBehaviour
                     });
 
         // Movimiento hacia arriba
-        LeanTween.move(_coin, firstPoint, velCoin).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
+        LeanTween.moveLocal(_coin, firstPoint, velCoin).setEase(LeanTweenType.easeOutSine).setOnComplete(() =>
         {
             // Espera para el siguiente movimiento
             LeanTween.delayedCall(.2f, () => 
             {
                 // Movimiento hacia abajo
-                LeanTween.move(_coin, lastPoint, velCoin / 3).setOnComplete(() =>
+                LeanTween.moveLocal(_coin, lastPoint, velCoin / 3).setOnComplete(() =>
                 {
                     matCoin.SetFloat("_Transparency", 1f);
                     LeanTween.delayedCall(timeSpawnCoin, () => { StartAnimCoin(velCoin, timeSpawnCoin, velRotationCoin, vCoinRotation); });
