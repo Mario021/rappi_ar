@@ -107,7 +107,6 @@ public class Prize : MonoBehaviour
 
     public void StartRotation(float vel, Vector3 vDir)
     {
-        Debug.Log(currPrizeRotate);
         currPrizeRotate.GetComponent<RotationMovement>().StartRotation(vel, vDir);
     }
 

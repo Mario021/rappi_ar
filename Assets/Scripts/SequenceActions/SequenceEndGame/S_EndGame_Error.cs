@@ -17,6 +17,7 @@ public class S_EndGame_Error : ElementSequence
     // Accion 2: Se elevan los contenedores
     public float maxheightContainers = 2f;
     public float timeMovContainer = .3f;
+    public AudioClip clipFailContainer;
 
     [Header("Action 2")]
     // Accion 1: Aparece mochila Rappi
@@ -25,14 +26,16 @@ public class S_EndGame_Error : ElementSequence
     // Posicion final de la mochila en la que se muestra
     // el premio.
     public Transform pointPosBag;
+    public AudioClip clipShowBag;
 
     //----------------------------------------
 
     private int _maxSequence = 2;
     private int _currSequence = 0;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
     }
 
     public override void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
@@ -74,6 +77,7 @@ public class S_EndGame_Error : ElementSequence
             case 0:
                 {
                     //Se elevan los contenedores
+                    PlaySound(clipFailContainer);
 
                     int count = containers.Length;
 
@@ -111,6 +115,8 @@ public class S_EndGame_Error : ElementSequence
                     Transform initPoint = c.GetPositionPrize();
 
                     bag.transform.position = initPoint.position;
+
+                    PlaySound(clipShowBag);
 
                     LeanTween.move(bag,
                          new Vector3(bag.transform.position.x, pointPosBag.position.y, bag.transform.position.z),

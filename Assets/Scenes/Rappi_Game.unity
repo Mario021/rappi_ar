@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0c06a1c4c38694cb0357b33592cb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioOutput: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+    type: 2}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -185,6 +187,7 @@ MonoBehaviour:
   - 0
   scaleBag: 0.5
   timeShowBag: 0.6
+  clipShowBag: {fileID: 8300000, guid: 47d7b6fe0cb23e148bd4c7fa11ee1513, type: 3}
   OnFinishAction1:
     m_PersistentCalls:
       m_Calls:
@@ -673,6 +676,22 @@ Prefab:
       propertyPath: delay
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: audioOutput
+      value: 
+      objectReference: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+        type: 2}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: clipOnMove
+      value: 
+      objectReference: {fileID: 8300000, guid: 210836270f5eff245b16fda06b9ced3a, type: 3}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: clipOnSelected
+      value: 
+      objectReference: {fileID: 8300000, guid: 436ec94440d958b49bff96c822620a5d, type: 3}
     m_RemovedComponents:
     - {fileID: 23962905744582340, guid: faf35d515ca1f0741847c60992f2e111, type: 2}
     - {fileID: 33814342020846356, guid: faf35d515ca1f0741847c60992f2e111, type: 2}
@@ -1040,15 +1059,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.98823535, g: 0.5568628, b: 0.52156866, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f754bd1e4665cc478a0d9d24573820c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1245,6 +1264,22 @@ Prefab:
       propertyPath: initPos
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: audioOutput
+      value: 
+      objectReference: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+        type: 2}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: clipOnMove
+      value: 
+      objectReference: {fileID: 8300000, guid: 210836270f5eff245b16fda06b9ced3a, type: 3}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: clipOnSelected
+      value: 
+      objectReference: {fileID: 8300000, guid: 436ec94440d958b49bff96c822620a5d, type: 3}
     m_RemovedComponents:
     - {fileID: 23962905744582340, guid: faf35d515ca1f0741847c60992f2e111, type: 2}
     - {fileID: 33814342020846356, guid: faf35d515ca1f0741847c60992f2e111, type: 2}
@@ -1391,6 +1426,22 @@ Prefab:
       propertyPath: delay
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: audioOutput
+      value: 
+      objectReference: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+        type: 2}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: clipOnMove
+      value: 
+      objectReference: {fileID: 8300000, guid: 210836270f5eff245b16fda06b9ced3a, type: 3}
+    - target: {fileID: 114974361266808852, guid: faf35d515ca1f0741847c60992f2e111,
+        type: 2}
+      propertyPath: clipOnSelected
+      value: 
+      objectReference: {fileID: 8300000, guid: 436ec94440d958b49bff96c822620a5d, type: 3}
     m_RemovedComponents:
     - {fileID: 23962905744582340, guid: faf35d515ca1f0741847c60992f2e111, type: 2}
     - {fileID: 33814342020846356, guid: faf35d515ca1f0741847c60992f2e111, type: 2}
@@ -1401,6 +1452,33 @@ Transform:
   m_PrefabParentObject: {fileID: 4869721275956616, guid: faf35d515ca1f0741847c60992f2e111,
     type: 2}
   m_PrefabInternal: {fileID: 404269474}
+--- !u!21 &410191080
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'mexico_2Material
+
+    -5219612'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: a01f4071220c0834f872d0b95e5feece, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &410603163
 GameObject:
   m_ObjectHideFlags: 0
@@ -6400,152 +6478,6 @@ Transform:
   m_Father: {fileID: 816959132}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &621507917
-Mesh:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: ImageTargetMesh57992
-  serializedVersion: 8
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 6
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 4
-    localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.45679206, y: 0, z: 0.5}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200020001000300
-  m_Skin: []
-  m_VertexData:
-    serializedVersion: 2
-    m_VertexCount: 4
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 24
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 128
-    _typelessdata: a6e0e9be00000000000000bf000000000000803f000000000000000000000000a6e0e9be000000000000003f000000000000803f00000000000000000000803fa6e0e93e00000000000000bf000000000000803f000000000000803f00000000a6e0e93e000000000000003f000000000000803f000000000000803f0000803f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.45679206, y: 0, z: 0.5}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshOptimized: 0
 --- !u!1 &624488216
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,6 +6531,7 @@ GameObject:
   - component: {fileID: 693223004}
   - component: {fileID: 693223003}
   - component: {fileID: 693223002}
+  - component: {fileID: 693223007}
   m_Layer: 5
   m_Name: ButtonMainMenu
   m_TagString: Untagged
@@ -6676,7 +6609,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -6685,9 +6618,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -6731,7 +6665,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f754bd1e4665cc478a0d9d24573820c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6746,6 +6680,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 693223000}
+--- !u!114 &693223007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 693223000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a1604f2a72fa648806c5233c16a594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 8c5940ec6281bdf44a61d005c8e4aae6, type: 3}
+  output: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791, type: 2}
 --- !u!1 &744019064
 GameObject:
   m_ObjectHideFlags: 0
@@ -6883,6 +6830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf77da80850db544e8616fbbe891aabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioOutput: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+    type: 2}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -6916,6 +6865,7 @@ MonoBehaviour:
   maxheightContainers: 1.5
   timeMovContainer: 0.3
   timeHideBag: 0.5
+  clipHideBag: {fileID: 8300000, guid: ddde98e33f5855046ac34fb0ca7742e3, type: 3}
   initheightContainers: 0
 --- !u!1 &811176711
 GameObject:
@@ -7336,6 +7286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714c92ee7d911664fa669b572759e689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioOutput: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+    type: 2}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -7374,9 +7326,11 @@ MonoBehaviour:
   - 0
   maxheightContainers: 2
   timeMovContainer: 0.3
+  clipFailContainer: {fileID: 8300000, guid: e8f9147ab8da2d542a289053531be7b8, type: 3}
   scaleBag: 0.5
   timeShowBag: 0.6
   pointPosBag: {fileID: 1467194286}
+  clipShowBag: {fileID: 8300000, guid: 47d7b6fe0cb23e148bd4c7fa11ee1513, type: 3}
 --- !u!1 &1100592847
 GameObject:
   m_ObjectHideFlags: 0
@@ -7406,6 +7360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e2226150f824844be2dfee0025fcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasSound: 1
   arrContainers:
   - {fileID: 2145548993}
   - {fileID: 905496464}
@@ -7549,6 +7504,152 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: PepitoMinigameControl+OnSelectorEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!43 &1129406616
+Mesh:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ImageTargetMesh82620
+  serializedVersion: 8
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 4
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.45679206, y: 0, z: 0.5}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200020001000300
+  m_Skin: []
+  m_VertexData:
+    serializedVersion: 2
+    m_VertexCount: 4
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 128
+    _typelessdata: a6e0e9be00000000000000bf000000000000803f000000000000000000000000a6e0e9be000000000000003f000000000000803f00000000000000000000803fa6e0e93e00000000000000bf000000000000803f000000000000803f00000000a6e0e93e000000000000003f000000000000803f000000000000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.45679206, y: 0, z: 0.5}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshOptimized: 0
 --- !u!1 &1146586044
 GameObject:
   m_ObjectHideFlags: 0
@@ -7776,6 +7877,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026a5510facc05248a6baddd573cdc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioOutput: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791,
+    type: 2}
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -7933,12 +8036,12 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 621507917}
+      objectReference: {fileID: 1129406616}
     - target: {fileID: 23749465856494170, guid: 4490ae51462cfb143a576561ec80e67c,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1788480962}
+      objectReference: {fileID: 410191080}
     - target: {fileID: 4130619868769740, guid: 4490ae51462cfb143a576561ec80e67c, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.109459
@@ -8083,6 +8186,7 @@ GameObject:
   - component: {fileID: 1358687385}
   - component: {fileID: 1358687384}
   - component: {fileID: 1358687383}
+  - component: {fileID: 1358687387}
   - component: {fileID: 1358687382}
   m_Layer: 5
   m_Name: ButtonStart
@@ -8161,7 +8265,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -8170,9 +8274,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -8216,7 +8321,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f754bd1e4665cc478a0d9d24573820c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8231,6 +8336,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358687380}
+--- !u!114 &1358687387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358687380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a1604f2a72fa648806c5233c16a594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 678f1bd86ca171846b991a78c0b80124, type: 3}
+  output: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791, type: 2}
 --- !u!1 &1372346641
 GameObject:
   m_ObjectHideFlags: 0
@@ -8787,6 +8905,7 @@ GameObject:
   - component: {fileID: 1435866576}
   - component: {fileID: 1435866575}
   - component: {fileID: 1435866574}
+  - component: {fileID: 1435866579}
   m_Layer: 5
   m_Name: ButtonRestart
   m_TagString: Untagged
@@ -8864,7 +8983,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -8873,9 +8992,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -8919,7 +9039,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f754bd1e4665cc478a0d9d24573820c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8934,6 +9054,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1435866572}
+--- !u!114 &1435866579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435866572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a1604f2a72fa648806c5233c16a594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 8c5940ec6281bdf44a61d005c8e4aae6, type: 3}
+  output: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791, type: 2}
 --- !u!1 &1441771893
 GameObject:
   m_ObjectHideFlags: 0
@@ -13623,6 +13756,7 @@ GameObject:
   - component: {fileID: 1460213859}
   - component: {fileID: 1460213858}
   - component: {fileID: 1460213857}
+  - component: {fileID: 1460213862}
   m_Layer: 5
   m_Name: ButtonSelector
   m_TagString: Untagged
@@ -13700,7 +13834,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -13709,9 +13843,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: bcd0e4c293f69e14dabdc3372bc596a1, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -13755,7 +13890,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f754bd1e4665cc478a0d9d24573820c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 836eaeffb377d534a8349332faffea93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13770,6 +13905,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1460213855}
+--- !u!114 &1460213862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1460213855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a1604f2a72fa648806c5233c16a594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 7a146f7a06219294d8adc0d191e3e68f, type: 3}
+  output: {fileID: 243657081671324650, guid: 4a354163d089d1d4ebefa46707597791, type: 2}
 --- !u!1 &1467194285
 GameObject:
   m_ObjectHideFlags: 0
@@ -14462,33 +14610,6 @@ Transform:
   m_Father: {fileID: 1647061702}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1788480962
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'mexico_2Material
-
-    58010'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a01f4071220c0834f872d0b95e5feece, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1792657814
 GameObject:
   m_ObjectHideFlags: 0

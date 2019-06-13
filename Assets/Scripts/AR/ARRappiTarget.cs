@@ -34,14 +34,14 @@ public class ARRappiTarget : MonoBehaviour, ITrackableEventHandler, ITrackableAu
     newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             isFound = true;
-            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
+            //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             isFound = false;
-            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
             OnTrackingLost();
         }
         else
@@ -49,7 +49,7 @@ public class ARRappiTarget : MonoBehaviour, ITrackableEventHandler, ITrackableAu
             // For combo of previousStatus=UNKNOWN + newStatus=UNKNOWN|NOT_FOUND
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
-            Debug.Log("trackingStart");
+            //Debug.Log("trackingStart");
             OnTrackingStart();
         }
     }
@@ -82,13 +82,13 @@ public class ARRappiTarget : MonoBehaviour, ITrackableEventHandler, ITrackableAu
 
     protected void OnTrackingStart()
     {
-        Debug.Log("OnTrackingStart");
+        //Debug.Log("OnTrackingStart");
         SetComponents(false);
     }
 
     protected virtual void OnTrackingFound()
     {
-        Debug.Log("OnTrackingFound");
+        //Debug.Log("OnTrackingFound");
 
         ARManager.Instance.AddTargetReference();
         SetAudioFound();       
@@ -96,7 +96,7 @@ public class ARRappiTarget : MonoBehaviour, ITrackableEventHandler, ITrackableAu
     }
     protected virtual void OnTrackingLost()
     {
-        Debug.Log("OnTrackingLost");
+        //Debug.Log("OnTrackingLost");
 
         ARManager.Instance.OnTargetLost();
         SetAudioLost();        

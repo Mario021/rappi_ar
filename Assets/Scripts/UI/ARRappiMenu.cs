@@ -134,7 +134,6 @@ public class ARRappiMenu : MonoBehaviour
         if (GameManager.Instance.IsPaused)
             return;
 
-        Debug.Log("Asombrado!");
     }
 
     /// <summary>

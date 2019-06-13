@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class PepitoMinigameControl : MonoBehaviour
 {
+    public bool HasSound = true;
+
     // Contenedores que se moveran en el minijuego. 
     public Container[] arrContainers;
 

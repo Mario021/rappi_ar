@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 public class Container : MonoBehaviour
 {
+    [Header("Config")]
     public int initPos = 0;
 
     public GameObject currPrize;
@@ -13,11 +15,23 @@ public class Container : MonoBehaviour
     public bool HasPrize = false;
     public bool IsMoving = false;
 
+    [Header("Audio")]
+    public AudioMixerGroup audioOutput;
+    public AudioClip clipOnSelected;
+    public AudioClip clipOnMove;
+    private AudioSource _aSource;
+
+    [Header("Events")]
     public UnityEvent OnSelected;
     public UnityEvent OnDeselected;
 
 	void Start ()
     {
+        // Config audio
+        _aSource = gameObject.AddComponent<AudioSource>();
+        _aSource.playOnAwake = false;
+        _aSource.outputAudioMixerGroup = audioOutput;
+
         HasPrize = (currPrize != null) ;
         OnDeselectedContainer();
     }
@@ -25,6 +39,8 @@ public class Container : MonoBehaviour
     public void Move(LTSpline spline, float vel, PepitoMinigameControl.OnFinishShuffleCallback onFinish = null)
     {
         IsMoving = true;
+
+        PlaySound(clipOnMove);
 
         LeanTween.move(gameObject, spline, vel).setOnComplete(() =>
         {
@@ -59,7 +75,7 @@ public class Container : MonoBehaviour
 
         IsSelected = true;
 
-        // Activar interfaz (flecha)
+        PlaySound(clipOnSelected);
     }
 
     public void OnDeselectedContainer()
@@ -87,5 +103,10 @@ public class Container : MonoBehaviour
         prize.transform.rotation = parent.localRotation;
 
         return prize;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        _aSource.PlayOneShot(clip);
     }
 }

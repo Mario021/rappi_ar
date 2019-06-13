@@ -17,9 +17,9 @@ public class S_Lift_Container_Selection : ElementSequence
     private int _maxSequence = 1;
     private int _currSequence = 0;
 
-    void Start()
+    protected override void Start()
     {
-
+        base.Start();
     }
 
     public override void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)

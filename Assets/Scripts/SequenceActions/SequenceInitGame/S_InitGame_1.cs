@@ -27,6 +27,7 @@ public class S_InitGame_1 : ElementSequence
     [Header("Action 3")]
     // Accion 3: Mochila rappi ingresa en el contenedor central y desaparece 
     public float timeHideBag = .5f;
+    public AudioClip clipHideBag;
 
     [Header("Action 4")]
     // Accion 4: Bajan los contenedores a su posicion inicial
@@ -39,8 +40,10 @@ public class S_InitGame_1 : ElementSequence
 
     private LTSpline _splineBag;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         _splineBag = GetSplineFromTranform(contentSpline);
         matBag.SetFloat("_Transparency", 1f);
         //animBag = bag.GetComponent<Animator>();
@@ -125,6 +128,9 @@ public class S_InitGame_1 : ElementSequence
             case 2:
                 {
                     // Mochila rappi ingresa en el contenedor central y desaparece 
+
+                    PlaySound(clipHideBag);
+
                     LeanTween.move(bag, _splineBag, timeHideBag).setEase(LeanTweenType.easeInSine).setOnComplete(() => 
                     {
                         LeanTween.delayedCall(timeToNextAction[_currSequence], () => { initNextSequence(); });

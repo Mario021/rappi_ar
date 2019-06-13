@@ -167,8 +167,6 @@ public class GameManager : MonoBehaviour
 
     private void OnStateChange()
     {
-        Debug.Log("Estado actual: " + CurrState);
-
         _arRappiMenu.SetActiveSearchTarget(_currState == GameState.Searching_Target);
 
         switch (_currState)

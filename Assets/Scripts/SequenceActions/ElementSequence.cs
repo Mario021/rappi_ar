@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 public abstract class ElementSequence : MonoBehaviour
 {
     private SequenceControl.OnFinishElementActionCallback _onFinishActionElement = null;
 
+    public AudioMixerGroup audioOutput;
+    private AudioSource _aSource;
+
     public UnityEvent OnStart;
     public UnityEvent OnFinish;
     public UnityEvent OnCancel;
+
+    protected virtual void Start()
+    {
+        _aSource = gameObject.AddComponent<AudioSource>();
+        _aSource.playOnAwake = false;
+        _aSource.outputAudioMixerGroup = audioOutput;
+    }
 
     public virtual void StartElementAction(SequenceControl.OnFinishElementActionCallback onFinish = null)
     {
@@ -38,6 +49,11 @@ public abstract class ElementSequence : MonoBehaviour
         OnCancel.Invoke();
 
         _onFinishActionElement = null;
+    }
+
+    protected void PlaySound(AudioClip clip)
+    {
+        _aSource.PlayOneShot(clip);
     }
 
     protected LTSpline GetSplineFromTranform(Transform ts)
