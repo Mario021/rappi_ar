@@ -5,14 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ARManager : MonoBehaviour
 {
-    // BORRAR
-    public TrophiesImageTarget activeTracker;
-
-    private PubDataContainer.PubData currPubData;
-    private ARMenu _ARMenu;
-
-    // END BORRAR
-
     public enum StateTracking
     {
         FOUND,
@@ -74,37 +66,4 @@ public class ARManager : MonoBehaviour
     {
         GameManager.Instance.PauseGame(true);
     }
-
-    #region ELIMINAR CODIGO
-    /// <summary>
-    /// Manejador que modifica al momento de indentificar un modelo.
-    /// </summary>
-    /// <param name="target"></param>
-    public void AddTargetReference(TrophiesImageTarget target)
-    {
-
-    }
-
-    /// <summary>
-    /// Manejador que modifica al momento de estar al momento de perder el marcador
-    /// </summary>
-    public void WaitTarget()
-    {
-
-    }
-
-    /// <summary>
-    /// Manejador que modifica al perder un marcador
-    /// </summary>
-    /// <param name="target"></param>
-    public void OnTargetLost(TrophiesImageTarget target)
-    {
-
-    }
-
-    public void ChangeModelTarget(ModelARControl mARControl)
-    {
-
-    }
-    #endregion
 }
