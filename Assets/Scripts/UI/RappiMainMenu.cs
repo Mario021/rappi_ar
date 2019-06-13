@@ -25,14 +25,6 @@ public class RappiMainMenu : MonoBehaviour
         SetInfoSelectorPrize();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            // TODO : Abrir mensaje de alerta
-        }
-    }
-
     /// <summary>
     /// Llenar listado con los premios disponibles
     /// </summary>

@@ -77,6 +77,22 @@ public class GameManager : MonoBehaviour
         _loaderScene = FindObjectOfType<LoaderScene>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(_currState != GameState.None)
+            {
+                // Cargar menu principal
+                LoadScene(idSceneMainMenu);
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
+    }
+
     public void InitGame()
     {
         // Buscar todas las secuencias en la escena
