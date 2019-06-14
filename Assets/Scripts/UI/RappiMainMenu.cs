@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RappiMainMenu : MonoBehaviour
 {
     public GameObject panelListPrize;
+    public Button bttStart;
 
     [Header("Prize Selector")]
     public Image imagePrize;
@@ -21,6 +22,9 @@ public class RappiMainMenu : MonoBehaviour
     void Start ()
     {
         _musicControl = FindObjectOfType<MusicControl>();
+
+        if (GameManager.Instance.currPrize == PrizeType.None)
+            bttStart.interactable = false;
 
         SetInfoSelectorPrize();
     }
@@ -48,6 +52,8 @@ public class RappiMainMenu : MonoBehaviour
     {
         GameManager.Instance.currPrize = prizeElement.prizeType;
         SetInfoSelectorPrize();
+
+        bttStart.interactable = true;
     }
 
     public void SetActivePanelListPrize(bool value)
@@ -63,10 +69,10 @@ public class RappiMainMenu : MonoBehaviour
         if (GameManager.Instance.currPrize == PrizeType.None)
             return;
 
-        DataPrize dp = GameManager.Instance.GetDataPrize(GameManager.Instance.currPrize);
+        //DataPrize dp = GameManager.Instance.GetDataPrize(GameManager.Instance.currPrize);
         
-        imagePrize.overrideSprite = dp.iconPrize;
-        namePrize.text = dp.namePrize;
+        //imagePrize.overrideSprite = dp.iconPrize;
+        //namePrize.text = dp.namePrize;
     }
 
     public void GoToAR()

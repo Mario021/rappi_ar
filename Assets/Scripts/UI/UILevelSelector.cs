@@ -34,6 +34,13 @@ public class UILevelSelector : MonoBehaviour
         ChangeColorIndicators(nextLevel);
     }
 
+    public void SetLevel(int id)
+    {
+        GameManager.Instance.currDifficulty = (LevelType)id;
+
+        ChangeColorIndicators(id);
+    }
+
     private void ChangeColorIndicators(int lvl)
     {
         for(int i = 0; i < lvlIndicators.Length; i++)
