@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MAT_Transparent_Bag_Rappi
+  m_Name: MAT_Transparent
   m_Shader: {fileID: 4800000, guid: 52860ef477036574f9432734233a6b26, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: ee4b356b385aa7140b03f345ee2d46c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7ba32025126bfc498f656e735827bea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1186dc17d8f0d37418dfe58336ac40a4, type: 3}
+        m_Texture: {fileID: 2800000, guid: e6780875bc92774458b86888703b64ab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,7 +65,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.711
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -77,7 +77,7 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
     - _SrcBlend: 1
-    - _Transparency: 1
+    - _Transparency: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
